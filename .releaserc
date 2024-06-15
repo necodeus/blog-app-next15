@@ -1,0 +1,8 @@
+{
+    "branches": [
+        "production"
+    ],
+    "plugins": [
+        "@semantic-release/github"
+    ]
+}
