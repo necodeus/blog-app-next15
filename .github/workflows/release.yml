@@ -31,9 +31,11 @@ jobs:
 
       - name: Archive Built Output
         run: |
-          tar -czf ${{ env.ARCHIVE_NAME }} .
+          cd build
+          tar -czf ../${{ env.ARCHIVE_NAME }} * .??*
+          cd ..
 
-      - name: Semantic Release1
+      - name: Semantic Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
