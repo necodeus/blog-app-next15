@@ -45,6 +45,8 @@ type CommentListProps = {
 };
 
 export const CommentList = ({ comments, postId }: CommentListProps) => {
+    console.log(comments);
+
     return (
         <div>
             {comments.map((comment) => {
@@ -87,7 +89,7 @@ export const CommentList = ({ comments, postId }: CommentListProps) => {
                         isExpanded={comment.id !== activeReplyCommentId}
                     />
                     {comment.id === activeReplyCommentId && <div>
-                        {comment?.replies?.map((reply) => <CommentReply reply={reply} />)}
+                        {comment?.replies?.map((reply) => <CommentReply key={reply.id} reply={reply} />)}
                         <CommentReplyInput />
                     </div>}
                 </div>
