@@ -31,9 +31,7 @@ jobs:
 
       - name: Archive Built Output
         run: |
-          cd build
-          tar -czf ../${{ env.ARCHIVE_NAME }} * .??*
-          cd ..
+          tar -czf $ARCHIVE_NAME dist/
 
       - name: Semantic Release
         run: npx semantic-release
