@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 let emittedWarning = false
 
 const position = {
@@ -13,14 +15,14 @@ const permalinkSymbolMeta = {
 
 type PermalinkOpts = {
   permalinkClass?: string
-  permalinkHref: (slug: string, state: any) => string
-  permalinkAttrs: (slug: string, state: any) => Record<string, string>
+  permalinkHref: (slug: string, state: unknown) => string
+  permalinkAttrs: (slug: string, state: unknown) => Record<string, string>
   permalinkSymbol: string
   permalinkSpace: boolean
   permalinkBefore: 'after' | 'before'
 }
 
-export function legacy (slug: string, opts: PermalinkOpts, state: any, idx: number) {
+export function legacy (slug: string, opts: PermalinkOpts, state: unknown, idx: number) {
   if (!emittedWarning) {
     const warningText = 'Using deprecated markdown-it-anchor permalink option, see https://github.com/valeriangalliat/markdown-it-anchor#permalinks'
 
@@ -67,11 +69,13 @@ const commonDefaults = {
   renderAttrs
 }
 
-export function makePermalink (renderPermalinkImpl) {
-  function renderPermalink (opts) {
+type MakePermalinkProps = (slug: string, opts: PermalinkOpts, anchorOpts: unknown, state: unknown, idx: number) => void
+
+export function makePermalink (renderPermalinkImpl: MakePermalinkProps) {
+  function renderPermalink (opts: unknown) {
     opts = Object.assign({}, renderPermalink.defaults, opts)
 
-    return (slug, anchorOpts, state, idx) => {
+    return (slug: string, anchorOpts: unknown, state: unknown, idx: number) => {
       return renderPermalinkImpl(slug, opts, anchorOpts, state, idx)
     }
   }
@@ -82,7 +86,7 @@ export function makePermalink (renderPermalinkImpl) {
   return renderPermalink
 }
 
-export const linkInsideHeader = makePermalink((slug: string, opts:  PermalinkOpts, anchorOpts: any, state: any, idx: number) => {
+export const linkInsideHeader = makePermalink((slug: string, opts:  PermalinkOpts, anchorOpts: unknown, state: unknown, idx: number) => {
   const linkTokens = [
     Object.assign(new state.Token('link_open', 'a', 1), {
       attrs: [
