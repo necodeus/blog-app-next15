@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import moment from 'moment';
 
 import { CommentLink } from '@components/CommentLink';
@@ -30,7 +32,7 @@ export const Header = ({ image, name, timeAgo, teaser, authorPhoto = '', authorN
                     <source media="(min-width: 1570px)" srcSet={`${image}/900x430`} />
                     <source media="(min-width: 900px)" srcSet={`${image}/1200x430`} />
                     <source media="(min-width: 0px)" srcSet={`${image}/900x430`} />
-                    <img className={styles.background} src={image} loading="lazy" />
+                    <img className={styles.background} src={image} loading="lazy" alt="main post image" />
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                     <div className="m-[20px] absolute z-[1] right-0 top-0 flex">
@@ -39,6 +41,7 @@ export const Header = ({ image, name, timeAgo, teaser, authorPhoto = '', authorN
                     <div className="component-padding relative !py-0 flex items-center mb-[10px]">
                         <img
                             src={`${authorPhoto}/25x25`}
+                            alt="post author"
                             loading="lazy"
                             className="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
                         />

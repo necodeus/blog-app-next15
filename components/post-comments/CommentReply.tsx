@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { LikeButton } from '@components/post-comments/LikeButton'
 import { DislikeButton } from '@components/post-comments/DislikeButton'
 
@@ -34,8 +36,14 @@ export const CommentReply = ({ reply }: CommentReplyProps) => {
             <div className="flex mb-1">
                 <div
                     className="min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-cover bg-center !rounded-[50%] bg-[#eee] mr-2">
-                    <img width="20px" height="20px" src={getGravatarURL(reply.author_name, 20)}
-                        className="rounded-[50%]" loading="lazy" />
+                    <img
+                        width="20px"
+                        height="20px"
+                        src={getGravatarURL(reply.author_name, 20)}
+                        alt="post author"
+                        className="rounded-[50%]"
+                        loading="lazy"
+                    />
                 </div>
                 <div className="flex items-center">
                     <div className="flex items-center font-medium">

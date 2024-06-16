@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 type PostAuthorProps = {
     profile: {
         display_name: string;
@@ -12,6 +14,7 @@ export const PostAuthor = ({ profile }: PostAuthorProps) => {
             <img
                 className="mobile-photo min-w-[55px] max-w-[55px] min-h-[55px] max-h-[55px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
                 src={`https://cdn.necodeo.com/${profile.image_id_avatar}`}
+                alt="post author"
                 loading="lazy"
             />
         </picture>

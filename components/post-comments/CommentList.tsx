@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import moment from "moment"
 import { sha256 } from 'js-sha256'
 
@@ -56,6 +58,7 @@ export const CommentList = ({ comments, postId }: CommentListProps) => {
                                 width="40px"
                                 height="40px"
                                 src={getGravatarURL(comment.author_name, 40)}
+                                alt="post author"
                                 className="rounded-full"
                                 loading="lazy"
                             />

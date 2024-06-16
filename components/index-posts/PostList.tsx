@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 import moment from "moment"
 
@@ -24,6 +25,7 @@ export const PostList = ({ posts }: PostListProps) => {
                         <picture>
                             <img
                                 src={post.author_avatar_url}
+                                alt="post author"
                                 loading="lazy"
                                 className="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
                             />

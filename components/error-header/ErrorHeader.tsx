@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { BackFilled } from "./BackFilled";
 import { PetTheCat } from "./PetTheCat";
 
@@ -15,6 +17,7 @@ export const ErrorHeader = ({ code, message }: ErrorHeaderProps) => {
                         <source media="(min-width: 768px)" srcSet="/uploads/backgrounds/error.jpg" />
                         <img
                             src="/uploads/backgrounds/error.jpg"
+                            alt="error background"
                             loading="lazy"
                         />
                     </picture>
