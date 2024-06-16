@@ -21,6 +21,7 @@
       "@app/*": ["./app/*"],
       "@views/*": ["./views/*"],
       "@components/*": ["./components/*"],
+      "@plugins/*": ["./plugins/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

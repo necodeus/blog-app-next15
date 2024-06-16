@@ -1,0 +1,9 @@
+
+.divSeparator {
+    background-color: #b3b3b3;
+    border-radius: 999px;
+    width: 3px;
+    height: 3px;
+    margin: 0 10px;
+    display: flex;
+}

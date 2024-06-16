@@ -1,13 +1,19 @@
 import Error404NotFound from "@views/Error404NotFound";
 import Error501NotImplemented from "@views/Error501NotImplemented";
 import Error500InternalServerError from "@views/Error500InternalServerError";
+
 import Home from "@views/Home";
+import BlogPostPage from "@views/BlogPostPage";
+
 import Redirection from "@views/Redirection";
 
 const PageComponents = {
-  PAGE_HOME: Home,
+  INDEX: Home,
+  POST: BlogPostPage,
+  // AUTHORS_INDEX: AuthorsIndex,
+  // AUTHOR: AuthorPage,
   REDIRECTION: Redirection as any, // special case for redirection
-} as const;
+};
 
 type GetInitialUrlDataProps = {
   status: string;
@@ -49,22 +55,19 @@ export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.
   const path = '/' + (props.params.path?.join('/') || '');
   const initialPageData = await getInitialUrlData(path);
 
-  if (initialPageData?.status !== 'ok') {
+  if (!initialPageData) {
     return <Error500InternalServerError />
   }
 
-  // if the page is not found in the database, return a 404 error
-  if (!initialPageData.url) {
+  if (!initialPageData?.url) {
     return <Error404NotFound />
   }
 
-  const PageComponent = PageComponents[initialPageData.url.content_type];
+  const PageComponent = initialPageData?.url?.content_type && PageComponents[initialPageData.url.content_type];
 
-  // if the page is found in the database but the content type is not supported, return a 501 error
   if (!PageComponent) {
     return <Error501NotImplemented {...initialPageData} />
   }
 
-  // okay, we have a valid page - render it
   return <PageComponent {...initialPageData} />
 }

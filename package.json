@@ -13,13 +13,19 @@
     "start": "cross-env HOSTNAME=0.0.0.0 node ./build/server.js"
   },
   "dependencies": {
+    "highlight.js": "^11.9.0",
+    "js-sha256": "^0.11.0",
+    "markdown-it": "^14.1.0",
+    "moment": "^2.30.1",
     "next": "14.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "twemoji": "^14.0.2"
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.3",
+    "@types/markdown-it": "^14.1.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

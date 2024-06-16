@@ -1,11 +1,12 @@
 process.env.APP_ENV = process.env.APP_ENV || 'development';
 
-// local api
-const env = {
-    API_BASE_URL: 'http://blog-api.localhost/api/v1',
-};
+const env = {};
 
 switch (process.env.APP_ENV) {
+    // local api
+    case 'local':
+        env.API_BASE_URL = 'http://blog-api.localhost/api/v1';
+        break;
     // development api
     case 'development':
         env.API_BASE_URL = 'https://blog-api.necodeo.com/api/v1';
