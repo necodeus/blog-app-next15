@@ -10,13 +10,14 @@ import { Content } from "@components/post-content/Content";
 import { PostAuthor } from "@components/post-author/PostAuthor";
 
 import { Comments } from "@components/post-comments/Comments";
-import { OtherPosts } from "@components/common-other-posts/OtherPosts";
 import { ExternalLinks } from "@components/common-external-links/ExternalLinks";
 import { AsideContainer } from "@components/AsideContainer";
 import { MainContainer } from "@components/MainContainer";
 import { AdComponent } from "@components/AdComponent";
+import { OtherPostsFilled } from "@components/common-other-posts/OtherPostsFilled";
+import { Scrollbar } from "@components/Scrollbar";
 
-export default function BlogPostPage({ post, postAuthor }: any) {
+export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
     const isBottomAdVisible = true;
     const isTopAdVisible = true;
 
@@ -61,92 +62,117 @@ export default function BlogPostPage({ post, postAuthor }: any) {
         },
     ];
 
+	const externalLinks = [
+		{
+			id: 1,
+			href: 'https://github.com/necodeus/blog-app-next',
+			text: 'github.com/necodeus/blog-app-next',
+			description: 'Kod źródłowy tej aplikacji',
+		},
+		{
+			id: 2,
+			href: 'https://github.com/necodeus/blog-api-laravel',
+			text: 'github.com/necodeus/blog-api-laravel',
+			description: 'Kod źródłowy API',
+		},
+		{
+			id: 3,
+			href: 'https://github.com/necodeus/blog-liveserver-bun',
+			text: 'github.com/necodeus/blog-liveserver-bun',
+			description: 'Kod źródłowy serwera WSS',
+		},
+	];
+
     return (
         <div>
             <MainContainer>
-                <SectionWrapper
-                    aside={
-                        <>
-                            <StickySection width="334px">
-                                <div className="background m-[7px]">
-                                    {isTopAdVisible && <AdComponent />}
-                                </div>
-                            </StickySection>
-                        </>
-                    }
-                    width="var(--desktop-main-content-width)"
-                    // ref={topAdVisible}
-                >
+                <Scrollbar>
+                    <SectionWrapper
+                        aside={
+                            <>
+                                <StickySection width="334px">
+                                    <div className="background m-[7px]">
+                                        {isTopAdVisible && <AdComponent />}
+                                    </div>
+                                </StickySection>
+                            </>
+                        }
+                        width="var(--desktop-main-content-width)"
+                        // ref={topAdVisible}
+                    >
 
-                    <BasicSection width="var(--main-width)" extraClasses="component-border-vertical">
-                        <div>
-                            {post?.id && <Header
-                                image={post.main_image_url ?? ''}
-                                name={post.title ?? ''}
-                                timeAgo={post?.modified_at ?? ''}
-                                teaser={post?.teaser ?? ''}
-                                authorName={postAuthor?.display_name ?? ''}
-                                authorPhoto={'https://cdn.necodeo.com/' + postAuthor?.image_id_avatar ?? ''}
-                                postId={post?.id ?? ''}
-                                numberOfComments={post?.comments_count}
-                            />}
-                        </div>
-                    </BasicSection>
-                </SectionWrapper>
+                        <BasicSection width="var(--main-width)" extraClasses="component-border-vertical">
+                            <div>
+                                {post?.id && <Header
+                                    coverPicture={post.cover_picture}
+                                    postAuthor={postAuthor}
+                                    createdAt={post.created_at}
+                                    name={post.title}
+                                    rating={4.5}
+                                    numberOfComments={post.comments_count}
+                                    teaser={post.teaser}
+                                />}
+                            </div>
+                        </BasicSection>
+                    </SectionWrapper>
 
-                <SectionWrapper
-                    aside={
-                        <>
-                            <StickySection width="334px">
-                                <div className="m-[7px]">
-                                    <ContentNav items={extractMarkdownHeadersWithIds(post?.content ?? '')} />
-                                </div>
-                            </StickySection>
-                        </>
-                    }
-                    width="var(--desktop-main-content-width)"
-                >
-                    <BasicSection width="var(--main-width)" extraClasses="not-desktop">
-                        <div className="m-[7px]">
-                            <ContentNav items={post?.contentHeaders} />
-                        </div>
-                    </BasicSection>
+                    <SectionWrapper
+                        aside={
+                            <>
+                                <StickySection width="334px">
+                                    <div className="m-[7px]">
+                                        <ContentNav items={extractMarkdownHeadersWithIds(post?.content ?? '')} />
+                                    </div>
+                                </StickySection>
+                            </>
+                        }
+                        width="var(--desktop-main-content-width)"
+                    >
+                        <BasicSection width="var(--main-width)" extraClasses="not-desktop">
+                            <div className="m-[7px]">
+                                <ContentNav items={post?.contentHeaders} />
+                            </div>
+                        </BasicSection>
 
-                    <BasicSection width="var(--main-width)" extraClasses="component-border-vertical">
-                        {post?.id && <Content content={post?.content ?? ''} />}
+                        <BasicSection width="var(--main-width)" extraClasses="component-border-vertical">
+                            {post?.id && <Content content={post?.content ?? ''} />}
 
-                        <div className="component-border-top p-[7px]">
-                            {post?.id && <PostAuthor profile={postAuthor} />}
-                        </div>
-                    </BasicSection>
-                </SectionWrapper>
+                            <div className="component-border-top p-[7px]">
+                                {post?.id && <PostAuthor profile={postAuthor} />}
+                            </div>
+                        </BasicSection>
+                    </SectionWrapper>
 
-                <SectionWrapper
-                    aside={
-                        <>
-                            <StickySection width="334px">
-                                <div className="m-[7px]">
-                                    {isBottomAdVisible && <AdComponent />}
-                                </div>
-                            </StickySection>
-                        </>
-                    }
-                    width="var(--desktop-main-content-width)"
-                    // v-observe-visibility="bottomAdVisible"
-                >
-                    <BasicSection width="var(--main-width)" extraClasses="component-border-vertical">
-                        <Comments isCommentsVisible={true} comments={comments} postId={post?.id} />
-                    </BasicSection>
-                </SectionWrapper>
+                    <SectionWrapper
+                        aside={
+                            <>
+                                <StickySection width="334px">
+                                    <div className="m-[7px]">
+                                        {isBottomAdVisible && <AdComponent />}
+                                    </div>
+                                </StickySection>
+                            </>
+                        }
+                        width="var(--desktop-main-content-width)"
+                        extraClasses="flex-grow"
+                        // v-observe-visibility="bottomAdVisible"
+                    >
+                        <BasicSection width="var(--main-width)" extraClasses="component-border-vertical h-full">
+                            <Comments isCommentsVisible={true} comments={comments} postId={post?.id} />
+                        </BasicSection>
+                    </SectionWrapper>
+                </Scrollbar>
             </MainContainer>
 
             <AsideContainer extraClasses="component-border-vertical">
-                <BasicSection>
-                    <OtherPosts />
-                </BasicSection>
-                <BasicSection>
-                    <ExternalLinks />
-                </BasicSection>
+                <Scrollbar>
+                    {otherPosts?.length > 0 && <BasicSection>
+                        <OtherPostsFilled posts={otherPosts} />
+                    </BasicSection>}
+                    <BasicSection>
+                        <ExternalLinks links={externalLinks} />
+                    </BasicSection>
+                </Scrollbar>
             </AsideContainer>
         </div>
     );

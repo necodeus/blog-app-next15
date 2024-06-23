@@ -1,17 +1,21 @@
-import Error404NotFound from "@views/Error404NotFound";
-import Error501NotImplemented from "@views/Error501NotImplemented";
-import Error500InternalServerError from "@views/Error500InternalServerError";
+import dynamic from 'next/dynamic';
 
-import Home from "@views/Home";
-import BlogPostPage from "@views/BlogPostPage";
-
+const Error501NotImplemented = dynamic(() => import('@views/Error501NotImplemented'));
+const Error500InternalServerError = dynamic(() => import('@views/Error500InternalServerError'));
+const Home = dynamic(() => import('@views/Home'));
+const BlogPostPage = dynamic(() => import('@views/BlogPostPage'));
+const AuthorsIndex = dynamic(() => import('@views/AuthorsIndex'));
+const AuthorPage = dynamic(() => import('@views/AuthorPage'));
+const CategoryPage = dynamic(() => import('@views/CategoryPage'));
 import Redirection from "@views/Redirection";
+import { notFound } from 'next/navigation';
 
 const PageComponents = {
   INDEX: Home,
   POST: BlogPostPage,
-  // AUTHORS_INDEX: AuthorsIndex,
-  // AUTHOR: AuthorPage,
+  AUTHORS_INDEX: AuthorsIndex,
+  AUTHOR: AuthorPage,
+  CATEGORY_PAGE: CategoryPage,
   REDIRECTION: Redirection as any, // special case for redirection
 };
 
@@ -52,6 +56,7 @@ type DynamicPageProps = {
 }
 
 export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.Element> {
+
   const path = '/' + (props.params.path?.join('/') || '');
   const initialPageData = await getInitialUrlData(path);
 
@@ -60,7 +65,7 @@ export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.
   }
 
   if (!initialPageData?.url) {
-    return <Error404NotFound />
+    return notFound();
   }
 
   const PageComponent = initialPageData?.url?.content_type && PageComponents[initialPageData.url.content_type];

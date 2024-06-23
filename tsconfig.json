@@ -21,6 +21,7 @@
       "@app/*": ["./app/*"],
       "@views/*": ["./views/*"],
       "@components/*": ["./components/*"],
+      "@utils/*": ["./utils/*"],
       "@plugins/*": ["./plugins/*"],
     }
   },

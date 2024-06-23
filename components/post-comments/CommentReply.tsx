@@ -6,6 +6,7 @@ import { DislikeButton } from '@components/post-comments/DislikeButton'
 import styles from './CommentReply.module.css'
 
 import moment from "moment"
+import 'moment/locale/pl';
 
 import { sha256 } from 'js-sha256'
 

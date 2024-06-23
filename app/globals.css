@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.simplebar-scrollbar::before {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.simplebar-track.simplebar-vertical {
+    width: 7px !important;
+    /* margin-top: 7px !important; */
+    /* margin-bottom: 7px !important; */
+}
+
+.simplebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 /* cyrillic */
 @font-face {
     font-family: "Jost";

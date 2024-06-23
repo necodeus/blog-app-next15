@@ -11,11 +11,3 @@
     display: flex;
     opacity: 0.5;
 }
-
-.list {
-    position: relative;
-}
-
-.list:not(:last-child) {
-    margin-bottom: 30px;
-}

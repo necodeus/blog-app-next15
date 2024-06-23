@@ -38,7 +38,7 @@ export const Comments = ({
 }: CommentsProps) => {
     return (
         <div
-            className="font-jost py-[30px] text-[17px]"
+            className="font-jost py-[30px] text-[17px] h-full"
             // v-observe-visibility="commentsVisibility"
         >
             <CommentHeading commentsCount={comments?.length} />

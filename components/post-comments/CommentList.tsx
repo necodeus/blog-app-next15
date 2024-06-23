@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import moment from "moment"
+import 'moment/locale/pl';
+
 import { sha256 } from 'js-sha256'
 
 import { CommentActions } from '@components/post-comments/CommentActions'
