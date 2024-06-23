@@ -7,4 +7,4 @@ type Props = {
     children: React.ReactNode;
 };
 
-export const Scrollbar = ({ children }: Props) => <SimpleBar autoHide={false} className={styles.scrollbar}>{children}</SimpleBar>;
+export const Scrollbar = ({ children }: Props) => <SimpleBar autoHide={false}>{children}</SimpleBar>;
