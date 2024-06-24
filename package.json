@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "lint": "next lint",
-    "build": "cross-env ",
+    "build": "next build",
     "build:release": "npm-run-all build mkdir copy",
     "mkdir": "cross-env mkdir -p ./build/.next ./build/public/_next/static/",
     "copy": "npm-run-all copy:init copy:json copy:public copy:static",
