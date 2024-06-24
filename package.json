@@ -12,7 +12,7 @@
     "copy:init": "cross-env [ -d ./.next/standalone ] && cp -r ./.next/standalone/. build/. || echo 'Standalone directory not found, skipping...'",
     "copy:json": "cross-env cp package.json build",
     "copy:public": "cross-env cp -r public/. build/public/.",
-    "copy:static": "cross-env cp -r .next/static/. build/public/_next/static/.",
+    "copy:static": "cross-env [ -d ./.next/static ] && cp -r ./.next/static/. build/. || echo 'Static directory not found, skipping...'",
     "start": "cd build && cross-env HOSTNAME=0.0.0.0 PORT=3000 node server.js"
   },
   "dependencies": {
