@@ -21,7 +21,7 @@ console.log('Running in', process.env.APP_ENV, 'mode');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // output: 'standalone',
+    output: 'standalone',
     env,
 };
 

@@ -60,6 +60,8 @@ export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.
   const path = '/' + (props.params.path?.join('/') || '');
   const initialPageData = await getInitialUrlData(path);
 
+  console.log('Initial page data:', initialPageData);
+
   if (!initialPageData) {
     return <Error500InternalServerError />
   }

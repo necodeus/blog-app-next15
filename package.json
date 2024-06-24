@@ -6,15 +6,14 @@
     "dev": "next dev",
     "lint": "next lint",
     "build": "cross-env next build",
-    "build:release": "npm-run-all build mkdir copy",
-    "mkdir": "cross-env mkdir -p ./build/.next ./build/public ./build/static",
-    "copy": "npm-run-all copy:init copy:json copy:modules copy:public copy:static",
-    "copy:init": "cp -r .next build",
-    "copy:modules": "cp -r node_modules build",
+    "build:release": "npm-run-all mkdir copy",
+    "mkdir": "cross-env mkdir -p ./build/.next ./build/public/_next/static/",
+    "copy": "npm-run-all copy:init copy:json copy:public copy:static",
+    "copy:init": "cp -r .next/standalone/. build/.",
     "copy:json": "cp package.json build",
-    "copy:public": "cp -r public build",
-    "copy:static": "cp -r .next/static build",
-    "start": "cross-env HOSTNAME=0.0.0.0 next start"
+    "copy:public": "cp -r public build/public/_next/.",
+    "copy:static": "cp -r .next/static/. build/public/_next/static/.",
+    "start": "cd build && cross-env HOSTNAME=0.0.0.0 PORT=3000 node server.js"
   },
   "dependencies": {
     "highlight.js": "^11.9.0",

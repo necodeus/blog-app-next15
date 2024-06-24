@@ -11,8 +11,6 @@ import { ErrorHeader } from "@components/error-header/ErrorHeader";
 export default function Error404NotFound(props: any) {
   const otherPosts: any = [];
 
-  console.error("Error404NotFound props: ", props);
-
   const externalLinks = [
     {
       id: 1,
