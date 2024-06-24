@@ -15,7 +15,7 @@ export const SectionWrapper = ({
 
     return (
         <div className={classes}>
-            <div className="desktop flex flex-col items-end component-border-top" style={{ width, minWidth: width }}>
+            <div className="desktop flex flex-col items-end" style={{ width, minWidth: width }}>
                 { aside }
             </div>
             <div className="w-full">

@@ -50,11 +50,11 @@ export default function Error404NotFound(props: any) {
       <AsideContainer extraClasses="component-border-vertical">
         <CustomScrollbar>
           {otherPosts?.length > 0 && (
-            <BasicSection>
+            <BasicSection extraClasses="component-border-bottom">
               <OtherPostsFilled posts={otherPosts} />
             </BasicSection>
           )}
-          <BasicSection>
+          <BasicSection extraClasses="component-border-bottom">
             <ExternalLinks links={externalLinks} />
           </BasicSection>
         </CustomScrollbar>

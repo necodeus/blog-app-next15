@@ -11,7 +11,7 @@ type ErrorHeaderProps = {
 export const ErrorHeader = ({ code, message }: ErrorHeaderProps) => {
     return (
         <>
-            <div className="relative font-jost">
+            <div className="relative font-jost component-border-bottom">
                 <div className="p-[7px]">
                     <picture>
                         <source media="(min-width: 768px)" srcSet="/uploads/backgrounds/error.jpg" />
@@ -27,7 +27,7 @@ export const ErrorHeader = ({ code, message }: ErrorHeaderProps) => {
                     </div>
                 </div>
             </div>
-            <div className="component-border-top component-border-bottom relative font-jost">
+            <div className="component-border-bottom relative font-jost">
                 <div className="text-[20px] font-jost relative">
                     <p className="m-[30px] leading-[35px]"><b>{ code } ~ </b>{ message }</p>
                 </div>

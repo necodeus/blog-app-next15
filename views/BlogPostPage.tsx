@@ -103,6 +103,7 @@ export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
             }
             width="var(--desktop-main-content-width)"
             // ref={topAdVisible}
+            extraClasses="component-border-bottom"
           >
             <BasicSection
               width="var(--main-width)"
@@ -136,7 +137,9 @@ export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
               </>
             }
             width="var(--desktop-main-content-width)"
+            extraClasses="component-border-bottom"
           >
+
             <BasicSection width="var(--main-width)" extraClasses="not-desktop">
               <div className="m-[7px]">
                 <ContentNav items={post?.contentHeaders} />
@@ -145,15 +148,18 @@ export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
 
             <BasicSection
               width="var(--main-width)"
-              extraClasses="component-border-vertical"
+              extraClasses="component-border-vertical overflow-hidden"
             >
-              {post?.id && <Content content={post?.content ?? ""} />}
+              <div className="component-border-bottom">
+                {post?.id && <Content content={post?.content ?? ""} />}
+              </div>
 
-              <div className="component-border-top p-[7px]">
+              <div className="p-[7px]">
                 {post?.id && <PostAuthor profile={postAuthor} />}
               </div>
             </BasicSection>
           </SectionWrapper>
+
           <SectionWrapper
             aside={
               <>
@@ -185,11 +191,11 @@ export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
       <AsideContainer extraClasses="component-border-vertical">
         <CustomScrollbar>
           {otherPosts?.length > 0 && (
-            <BasicSection>
+            <BasicSection extraClasses="component-border-bottom">
               <OtherPostsFilled posts={otherPosts} />
             </BasicSection>
           )}
-          <BasicSection>
+          <BasicSection extraClasses="component-border-bottom">
             <ExternalLinks links={externalLinks} />
           </BasicSection>
         </CustomScrollbar>

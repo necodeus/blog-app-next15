@@ -52,7 +52,7 @@ export default function Home({ posts }: HomeProps) {
               width="var(--main-width)"
               extraClasses="component-border-vertical lg:h-[100vh]"
             >
-              <div className="component-padding">
+              <div className="component-padding component-border-bottom">
                 <PostList posts={posts} />
               </div>
             </BasicSection>

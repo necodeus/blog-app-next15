@@ -43,7 +43,7 @@ export const Header = ({
     });
 
     return (
-        <div className="component-border-top font-jost">
+        <div className="font-jost">
             <div className="relative">
                 <picture>
                     {coverPicture?.['900x430'] && <source media="(min-width: 1570px)" srcSet={coverPicture?.['900x430']} />}
