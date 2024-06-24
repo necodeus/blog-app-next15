@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "lint": "next lint",
-    "build": "cross-env next build",
-    "build:release": "npm-run-all mkdir copy",
+    "build": "cross-env ",
+    "build:release": "npm-run-all build mkdir copy",
     "mkdir": "cross-env mkdir -p ./build/.next ./build/public/_next/static/",
     "copy": "npm-run-all copy:init copy:json copy:public copy:static",
     "copy:init": "cross-env [ -d ./.next/standalone ] && cp -r ./.next/standalone/. build/. || echo 'Standalone directory not found, skipping...'",
