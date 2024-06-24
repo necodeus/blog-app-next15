@@ -176,13 +176,15 @@ export default function BlogPostPage({ post, postAuthor, otherPosts }: any) {
           >
             <BasicSection
               width="var(--main-width)"
-              extraClasses="component-border-vertical h-full [border-bottom:1px_solid_#d1d1d1]"
+              extraClasses="component-border-vertical h-full"
             >
-              <Comments
-                isCommentsVisible={true}
-                comments={comments}
-                postId={post?.id}
-              />
+              <div className="component-border-bottom">
+                <Comments
+                  isCommentsVisible={true}
+                  comments={comments}
+                  postId={post?.id}
+                />
+              </div>
             </BasicSection>
           </SectionWrapper>
         </CustomScrollbar>
