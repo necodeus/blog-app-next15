@@ -1,7 +1,7 @@
 import { AsideContainer } from "@components/AsideContainer";
 import { BasicSection } from "@components/BasicSection";
+import CustomScrollbar from "@components/CustomScrollbar";
 import { MainContainer } from "@components/MainContainer";
-import { Scrollbar } from "@components/Scrollbar";
 import { SectionWrapper } from "@components/SectionWrapper";
 
 import { ExternalLinks } from "@components/common-external-links/ExternalLinks";
@@ -35,7 +35,7 @@ export default function Error404NotFound(props: any) {
   return (
     <div>
       <MainContainer>
-        <Scrollbar>
+        <CustomScrollbar>
           <SectionWrapper width="var(--desktop-main-content-width)">
             <BasicSection
               width="var(--main-width)"
@@ -44,11 +44,11 @@ export default function Error404NotFound(props: any) {
               <ErrorHeader code={404} message="Strona nie została znaleziona!" />
             </BasicSection>
           </SectionWrapper>
-        </Scrollbar>
+        </CustomScrollbar>
       </MainContainer>
 
       <AsideContainer extraClasses="component-border-vertical">
-        <Scrollbar>
+        <CustomScrollbar>
           {otherPosts?.length > 0 && (
             <BasicSection>
               <OtherPostsFilled posts={otherPosts} />
@@ -57,7 +57,7 @@ export default function Error404NotFound(props: any) {
           <BasicSection>
             <ExternalLinks links={externalLinks} />
           </BasicSection>
-        </Scrollbar>
+        </CustomScrollbar>
       </AsideContainer>
     </div>
   );

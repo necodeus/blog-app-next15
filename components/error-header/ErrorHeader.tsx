@@ -27,7 +27,7 @@ export const ErrorHeader = ({ code, message }: ErrorHeaderProps) => {
                     </div>
                 </div>
             </div>
-            <div className="component-border-top relative font-jost">
+            <div className="component-border-top component-border-bottom relative font-jost">
                 <div className="text-[20px] font-jost relative">
                     <p className="m-[30px] leading-[35px]"><b>{ code } ~ </b>{ message }</p>
                 </div>

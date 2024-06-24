@@ -11,7 +11,7 @@ export const SectionWrapper = ({
     children,
     extraClasses,
 }: SectionWrapperProps) => {
-    const classes = `flex ${extraClasses}`;
+    const classes = ['flex', extraClasses].filter(Boolean).join(' ');
 
     return (
         <div className={classes}>
