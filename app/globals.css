@@ -12,12 +12,6 @@
     /* margin-bottom: 7px !important; */
 }
 
-.simplebar-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
 /* cyrillic */
 @font-face {
     font-family: "Jost";

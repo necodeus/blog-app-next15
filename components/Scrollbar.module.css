@@ -4,7 +4,15 @@
     width: var(--desktop-main-width);
     height: var(--desktop-main-height);
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     display: flex;
     flex-direction: column;
+}
+
+.scrollbar {
+    max-height: auto;
+
+    @media (min-width: calc(800px)) {
+        max-height: 100vh;
+    }
 }
