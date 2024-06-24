@@ -9,10 +9,10 @@
     "build:release": "npm-run-all mkdir copy",
     "mkdir": "cross-env mkdir -p ./build/.next ./build/public/_next/static/",
     "copy": "npm-run-all copy:init copy:json copy:public copy:static",
-    "copy:init": "cp -r .next/standalone/. build/.",
-    "copy:json": "cp package.json build",
-    "copy:public": "cp -r public build/public/_next/.",
-    "copy:static": "cp -r .next/static/. build/public/_next/static/.",
+    "copy:init": "cross-env cp -r .next/standalone/. build/.",
+    "copy:json": "cross-env cp package.json build",
+    "copy:public": "cross-env cp -r public/. build/public/.",
+    "copy:static": "cross-env cp -r .next/static/. build/public/_next/static/.",
     "start": "cd build && cross-env HOSTNAME=0.0.0.0 PORT=3000 node server.js"
   },
   "dependencies": {
