@@ -1,22 +1,26 @@
 import dynamic from 'next/dynamic';
 
 import Redirection from "@views/Redirection";
-import { notFound } from 'next/navigation';
+
 const Error404NotFound = dynamic(() => import('@views/Error404NotFound'));
 const Error501NotImplemented = dynamic(() => import('@views/Error501NotImplemented'));
 const Error500InternalServerError = dynamic(() => import('@views/Error500InternalServerError'));
-const Home = dynamic(() => import('@views/Home'));
-const BlogPostPage = dynamic(() => import('@views/BlogPostPage'));
-const AuthorsIndex = dynamic(() => import('@views/AuthorsIndex'));
-const AuthorPage = dynamic(() => import('@views/AuthorPage'));
-const CategoryPage = dynamic(() => import('@views/CategoryPage'));
+const IndexView = dynamic(() => import('@views/IndexView'));
+const PostView = dynamic(() => import('@views/PostView'));
+const AuthorIndexView = dynamic(() => import('@views/AuthorIndexView'));
+const AuthorView = dynamic(() => import('@views/AuthorView'));
+const CategoryPostListingView = dynamic(() => import('@views/CategoryPostListingView'));
+const TagPostListingView = dynamic(() => import('@views/TagPostListingView'));
+
+// import { notFound } from 'next/navigation';
 
 const PageComponents = {
-  INDEX: Home,
-  POST: BlogPostPage,
-  AUTHORS_INDEX: AuthorsIndex,
-  AUTHOR: AuthorPage,
-  CATEGORY_PAGE: CategoryPage,
+  INDEX: IndexView,
+  POST: PostView,
+  AUTHORS_INDEX: AuthorIndexView,
+  AUTHOR: AuthorView,
+  CATEGORY_POST_LISTING: CategoryPostListingView,
+  TAG_POST_LISTING: TagPostListingView,
   REDIRECTION: Redirection as any, // special case for redirection
 };
 
@@ -29,8 +33,6 @@ type GetInitialUrlDataProps = {
 
 async function getInitialUrlData(path: string): Promise<GetInitialUrlDataProps | null> {
   const url = `${process.env.API_BASE_URL}/initial-url-data?path=${path}`;
-
-  console.log('Fetching', url);
 
   try {
     const response = await fetch(url, {
@@ -57,11 +59,8 @@ type DynamicPageProps = {
 }
 
 export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.Element> {
-
   const path = '/' + (props.params.path?.join('/') || '');
   const initialPageData = await getInitialUrlData(path);
-
-  console.log('Initial page data:', initialPageData);
 
   if (!initialPageData) {
     return <Error500InternalServerError />
