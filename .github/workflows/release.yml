@@ -2,59 +2,54 @@ name: Release
 
 on:
   push:
-    branches:
-      - production
+    tags:
+      - "v*"
 
 jobs:
-  release:
+  build:
+    name: Build and Release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        goos: [linux, windows]
+        goarch: [amd64, 386]
     steps:
-      - uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v3
         with:
-          fetch-depth: 0
+          go-version: "1.21.12"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.9.0'
+      - name: Check out code
+        uses: actions/checkout@v3
 
-      # INSTALL AND BUILD
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build:release
-
-      - name: Setup Environment Variables for Artifacts
-        run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
-
-      - name: Archive Built Output
+      - name: Build binary
         run: |
-          cd build
-          tar -czf ../${{ env.ARCHIVE_NAME }} * .??*
-          cd ..
+          mkdir -p build
+          go build -o ./build/${{ matrix.goos }}-${{ matrix.goarch }}/
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
 
-      - name: Semantic Release
-        run: npx semantic-release
+      - name: Create Release
+        if: matrix.os == 'ubuntu-latest' && matrix.goos == 'linux' && matrix.goarch == 'amd64'
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-
-      - name: Get Latest Release Upload
-        id: get_upload_url
-        run: |
-          URL=$(curl -H "Authorization: token ${{ secrets.PAT }}" \
-              https://api.github.com/repos/${{ github.repository }}/releases/latest \
-              | jq -r '.upload_url')
-          echo "UPLOAD_URL=${URL}" >> $GITHUB_ENV
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
       - name: Upload Release Asset
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
-        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: ${{ env.ARCHIVE_NAME }}
-          asset_name: ${{ env.ARCHIVE_NAME }}
-          asset_content_type: application/gzip
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/${{ matrix.goos }}-${{ matrix.goarch }}
+          asset_name: build-${{ matrix.goos }}-${{ matrix.goarch }}-${{ github.run_number }}
+          asset_content_type: application/octet-stream

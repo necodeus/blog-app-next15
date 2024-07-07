@@ -36,7 +36,7 @@
     font-weight: 400;
     font-size: 38px;
 
-    &::before {
+    /* &::before {
         content: '# ';
         position: absolute;
         transform: scale(2.0);
@@ -45,7 +45,7 @@
         z-index: -1;
         color: #c4c4c41a;
         color: #ececec;
-    }
+    } */
 }
 
 .content .markdown-alert {

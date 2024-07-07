@@ -47,8 +47,6 @@ type CommentListProps = {
 };
 
 export const CommentList = ({ comments, postId }: CommentListProps) => {
-    console.log(comments);
-
     return (
         <div>
             {comments.map((comment) => {

@@ -23,6 +23,21 @@ console.log('Running in', process.env.APP_ENV, 'mode');
 const nextConfig = {
     output: 'standalone',
     env,
+    poweredByHeader: false,
+    trailingSlash: false,
+    experimental: {
+        turbotrace: {
+            logAll: true,
+            logDetail: true,
+            logLevel: 'info',
+        },
+    },
+    logging: {
+        fetches: {
+            fullUrl: true,
+        },
+    },
+    // useFileSystemPublicRoutes: false,
 };
 
 export default nextConfig;

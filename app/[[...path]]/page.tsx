@@ -1,5 +1,8 @@
 import dynamic from 'next/dynamic';
 
+import Redirection from "@views/Redirection";
+import { notFound } from 'next/navigation';
+const Error404NotFound = dynamic(() => import('@views/Error404NotFound'));
 const Error501NotImplemented = dynamic(() => import('@views/Error501NotImplemented'));
 const Error500InternalServerError = dynamic(() => import('@views/Error500InternalServerError'));
 const Home = dynamic(() => import('@views/Home'));
@@ -7,8 +10,6 @@ const BlogPostPage = dynamic(() => import('@views/BlogPostPage'));
 const AuthorsIndex = dynamic(() => import('@views/AuthorsIndex'));
 const AuthorPage = dynamic(() => import('@views/AuthorPage'));
 const CategoryPage = dynamic(() => import('@views/CategoryPage'));
-import Redirection from "@views/Redirection";
-import { notFound } from 'next/navigation';
 
 const PageComponents = {
   INDEX: Home,
@@ -67,7 +68,7 @@ export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.
   }
 
   if (!initialPageData?.url) {
-    return notFound();
+    return <Error404NotFound />
   }
 
   const PageComponent = initialPageData?.url?.content_type && PageComponents[initialPageData.url.content_type];

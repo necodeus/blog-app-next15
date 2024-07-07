@@ -46,10 +46,10 @@ export const Header = ({
         <div className="font-jost">
             <div className="relative">
                 <picture>
-                    {coverPicture?.['900x430'] && <source media="(min-width: 1570px)" srcSet={coverPicture?.['900x430']} />}
-                    {coverPicture?.['1200x430'] && <source media="(min-width: 900px)" srcSet={coverPicture?.['1200x430']} />}
+                    {coverPicture?.['900x430'] && <source media="(min-width: 1468px)" srcSet={coverPicture?.['900x430']} />}
+                    {coverPicture?.['1200x430'] && <source media="(min-width: 800px)" srcSet={coverPicture?.['1200x430']} />}
                     {coverPicture?.['900x430'] && <source media="(min-width: 0px)" srcSet={coverPicture?.['900x430']} />}
-                    <img className={styles.background} src={coverPicture?.['1200x430']} loading="lazy" alt="" />
+                    <img className={styles.background} src={coverPicture?.['1200x4320']} loading="lazy" alt="" />
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                     <div className="m-[20px] absolute z-[1] right-0 top-0 flex">
