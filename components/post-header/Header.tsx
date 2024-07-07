@@ -45,8 +45,6 @@ export const Header = ({
         exceptions: 'komentarze',
     });
 
-    console.log('//postAuthor', postAuthor);
-
     return (
         <div className="font-jost">
             <div className="relative">
