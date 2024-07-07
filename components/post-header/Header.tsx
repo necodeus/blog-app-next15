@@ -3,7 +3,6 @@
 import moment from 'moment';
 
 import { numberToPolishNumeral } from '@utils/strings/numerals';
-import { CommentLink } from '@components/CommentLink';
 
 import { Back } from './Back';
 import { Stars } from './Stars';
@@ -91,7 +90,7 @@ export const Header = ({
 
                     <div className={styles.divSeparator}></div>
 
-                    <CommentLink id="comments" extraClasses="font-medium">{numberOfComments || 0} {commentsText}</CommentLink>
+                    <div>{numberOfComments || 0} {commentsText}</div>
                 </div>
                 {teaser?.length > 0 && <div className="mt-[10px] text-[20px] leading-[35px]">{teaser}</div>}
             </div>
