@@ -16,7 +16,7 @@ type Props = {
     };
     postAuthor: {
         id: string;
-        path: string; // TODO
+        path: string;
         name: string;
         bio: string;
         author_picture: {
