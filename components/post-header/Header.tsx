@@ -8,16 +8,20 @@ import { Back } from './Back';
 import { Stars } from './Stars';
 
 import styles from './Header.module.css';
+import Link from 'next/link';
 
 type Props = {
     coverPicture: {
         [ key: string ]: string;
     };
     postAuthor: {
+        id: string;
+        path: string;
+        name: string;
+        bio: string;
         author_picture: {
             [ key: string ]: string;
         };
-        name: string;
     };
     createdAt: string;
     name: string;
@@ -56,18 +60,19 @@ export const Header = ({
                     </div>
                     <div className="component-padding relative !py-0 flex items-center mb-[10px]">
                         {postAuthor && <>
-                            <img
-                            src={postAuthor.author_picture?.['25x25']}
-                                alt=""
-                                loading="lazy"
-                                className="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
-                            />
-                            <div className="ml-[10px] font-medium">
-                                {postAuthor.name}
-                            </div>
+                            <Link href={postAuthor.path || ''} className="flex items-center">
+                                <img
+                                src={postAuthor.author_picture?.['25x25']}
+                                    alt=""
+                                    loading="lazy"
+                                    className="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
+                                />
+                                <div className="ml-[10px] font-medium">
+                                    {postAuthor.name}
+                                </div>
+                            </Link>
                             <div className={styles.divSeparator}></div>
                         </>}
-
                         <div>
                             {moment(createdAt).fromNow()}
                         </div>
