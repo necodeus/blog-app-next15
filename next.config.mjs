@@ -25,18 +25,6 @@ const nextConfig = {
     env,
     poweredByHeader: false,
     trailingSlash: false,
-    experimental: {
-        turbotrace: {
-            logAll: true,
-            logDetail: true,
-            logLevel: 'info',
-        },
-    },
-    logging: {
-        fetches: {
-            fullUrl: true,
-        },
-    },
     // useFileSystemPublicRoutes: false,
 };
 
