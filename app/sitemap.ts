@@ -24,7 +24,7 @@ async function getSitemap() {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { sitemap } = await getSitemap();
 
-  const items = sitemap.map((item: any) => ({
+  const items = sitemap?.map((item: any) => ({
     url: `https://blog.necodeo.com${item.path}`,
     lastModified: new Date(item.updated_at),
     changeFrequency: item.change_frequency,
