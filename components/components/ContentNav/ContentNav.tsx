@@ -1,13 +1,12 @@
-import { ContentLink } from '@components/components/ContentLink/ContentLink';
-
 import styles from './ContentNav.module.css';
+import Link from 'next/link';
 
 export const ContentNav = ({ items }: any) => {
     return (
         <ul className={styles.contentNav}>
             { items?.map((item: any, i: number) => (
                 <li key={i}>
-                    <ContentLink id={item.id}>{ item.title }</ContentLink>
+                    <Link href={`#${item.id}`}>{ item.title }</Link>
                 </li>
             )) }
         </ul>

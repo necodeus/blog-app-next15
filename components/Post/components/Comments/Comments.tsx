@@ -1,7 +1,6 @@
-import { CommentHeading } from '@components/Post/components/Comments/CommentHeading';
 import { CommentList } from '@components/Post/components/Comments/CommentList';
 import { CommentListEmpty } from '@components/Post/components/Comments/CommentListEmpty';
-import { CommentReplyInput } from './CommentReplyInput';
+import { SectionTitle } from '@components/components/SectionTitle/SectionTitle';
 
 type CommentsProps = {
     postId: string;
@@ -36,16 +35,11 @@ export const Comments = ({
     isCommentsVisible,
 }: CommentsProps) => {
     return (
-        <div
-            className="font-jost py-[30px] text-[17px] h-full"
-            // v-observe-visibility="commentsVisibility"
-        >
-            <CommentHeading commentsCount={comments?.length} />
-            <CommentReplyInput />
-            {isCommentsVisible && comments?.length > 0 && <CommentList
-                postId={postId}
-                comments={comments}
-            />}
+        <div className="font-jost py-[30px] text-[17px] h-full">
+            <SectionTitle withMargin><b>Komentarze</b></SectionTitle>
+
+            {comments?.length > 0 && <CommentList postId={postId} comments={comments} />}
+
             {isCommentsVisible && comments?.length === 0 && <CommentListEmpty />}
         </div>
     );

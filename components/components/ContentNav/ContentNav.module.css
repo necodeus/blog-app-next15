@@ -1,4 +1,4 @@
-.content-nav {
+.contentNav {
     background-color: #eee;
     border-radius: 7px;
     color: gray;
@@ -7,20 +7,20 @@
     line-height: 35px;
 }
 
-.content-nav li:not(:last-child) {
+.contentNav li:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.content-nav li {
+.contentNav li {
     list-style: none;
     counter-increment: item;
     position: relative;
 }
 
-.content-nav li > *::before {
+.contentNav li > *::before {
     content: counter(item) '. ';
 }
 
-.content-nav li > * {
+.contentNav li > * {
     display: block;
 }

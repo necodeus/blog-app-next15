@@ -10,13 +10,7 @@ import hljs from 'highlight.js'
 
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
 
-import styles from './Content.module.css';
-
-type ContentProps = {
-    content: string;
-};
-
-export const Content = ({ content }: ContentProps) => {
+export const Content = ({ content }: any) => {
     const md = new MarkdownIt({
         highlight: function (str: string, lang: string) {
             const code = hljs.highlight(str, {
@@ -37,7 +31,7 @@ export const Content = ({ content }: ContentProps) => {
 
     return (
         <div
-            className={styles.content}
+            className="content"
             dangerouslySetInnerHTML={{ __html: convertMarkdownToHTML(content) }}
         ></div>
     );

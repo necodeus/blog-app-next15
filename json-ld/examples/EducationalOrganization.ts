@@ -1,0 +1,43 @@
+import { EducationalOrganization, WithContext } from "schema-dts";
+
+// An educational organization.
+export const createJsonLd = (data: any): WithContext<EducationalOrganization> => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: "ACME Community College",
+    leiCode: "ABCDEFG123",
+    taxID: "123-34-5678",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "123 Main Street",
+      addressLocality: "Boston",
+      addressRegion: "MA",
+      postalCode: "02134",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "Admissions",
+      telephone: "+15551234567",
+    },
+    subOrganization: {
+      "@type": "EducationalOrganization",
+      name: "ACME Community College - Berkshires Campus",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "123 Elm Street",
+        addressLocality: "Amherst",
+        addressRegion: "MA",
+        postalCode: "01002",
+      },
+    },
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Accreditation",
+      recognizedBy: {
+        "@type": "Organization",
+        name: "Southern Association of Colleges and Schools Commission on Colleges",
+      },
+    },
+  };
+};

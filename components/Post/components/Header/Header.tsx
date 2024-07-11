@@ -1,14 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-import moment from 'moment';
-
 import { numberToPolishNumeral } from '@utils/strings/numerals';
 
 import { Button } from '@components/components/Button/Button';
 import { Stars } from '@components/components/Stars/Stars';
+import { PublicationDetails } from '@components/components/PublicationDetails/PublicationDetails';
 
 import styles from './Header.module.css';
-import Link from 'next/link';
 
 type Props = {
     coverPicture: {
@@ -49,34 +47,25 @@ export const Header = ({
         <div className="font-jost">
             <div className="relative">
                 <picture>
-                    {coverPicture?.['900x430'] && <source media="(min-width: 1468px)" srcSet={coverPicture?.['900x430']} />}
+                    {coverPicture?.['785x420'] && <source media="(min-width: 1468px)" srcSet={coverPicture?.['785x420']} />}
                     {coverPicture?.['1200x430'] && <source media="(min-width: 800px)" srcSet={coverPicture?.['1200x430']} />}
-                    {coverPicture?.['900x430'] && <source media="(min-width: 0px)" srcSet={coverPicture?.['900x430']} />}
+                    {coverPicture?.['785x420'] && <source media="(min-width: 0px)" srcSet={coverPicture?.['785x420']} />}
                     <img className={styles.background} src={coverPicture?.['1200x4320']} loading="lazy" alt="" />
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                     <div className="m-[20px] absolute z-[1] right-0 top-0 flex">
                         <Button link="/" color="blured" text="Wstecz" />
                     </div>
-                    <div className="component-padding relative !py-0 flex items-center mb-[10px]">
-                        {postAuthor && <>
-                            <Link href={postAuthor.path || ''} className="flex items-center">
-                                <img
-                                src={postAuthor.author_picture?.['25x25']}
-                                    alt=""
-                                    loading="lazy"
-                                    className="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
-                                />
-                                <div className="ml-[10px] font-medium">
-                                    {postAuthor.name}
-                                </div>
-                            </Link>
-                            <div className={styles.divSeparator}></div>
-                        </>}
-                        <div>
-                            {moment(createdAt).fromNow()}
-                        </div>
-                    </div>
+
+                    <PublicationDetails
+                        publisher={{
+                            name: postAuthor.name,
+                            path: postAuthor.path,
+                            picture: postAuthor.author_picture,
+                        }}
+                        createdAt={createdAt}
+                    />
+
                     <div className="component-padding relative !py-0">
                         <h1 className="flex">
                             <span className="text-[38px]">{name}</span>

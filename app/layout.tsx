@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import "./globals.css";
 
 type Props = {
@@ -9,11 +7,10 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="pl">
-      <Head>
+      <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      </Head>
+      </head>
       <body>
         {children}
       </body>

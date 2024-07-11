@@ -1,16 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 
-import moment from "moment"
 import 'moment/locale/pl';
 
 import { sha256 } from 'js-sha256'
 
-import { CommentActions } from '@components/Post/components/Comments/CommentActions'
-import { CommentContent } from '@components/Post/components/Comments/CommentContent'
-import { CommentReplyInput } from '@components/Post/components/Comments/CommentReplyInput'
-import { CommentReply } from '@components/Post/components/Comments/CommentReply'
-
-import styles from './CommentList.module.css'
+import { PublicationDetails } from "@components/components/PublicationDetails/PublicationDetails";
 
 const getGravatarURL = (name: string, size = 40) => {
     const lowercaseName = String(name).trim().toLowerCase()
@@ -46,52 +40,25 @@ type CommentListProps = {
     }[];
 };
 
-export const CommentList = ({ comments, postId }: CommentListProps) => {
+export const CommentList = ({ comments }: CommentListProps) => {
     return (
         <div>
             {comments.map((comment) => {
-                const activeReplyCommentId = null;
-
-                return <div className="mx-[15px] mt-[15px]" key={comment.id}>
-                    <div className="mb-2 flex">
-                        <div
-                            className="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] bg-cover bg-center !rounded-full bg-[#eee] mr-3">
-                            <img
-                                width="40px"
-                                height="40px"
-                                src={getGravatarURL(comment.author_name, 40)}
-                                alt="post author"
-                                className="rounded-full"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="flex items-center">
-                            <div className="flex items-center">
-                                <div className="flex items-center font-medium">{ comment.author_name }</div>
-                            </div>
-
-                            <div className={styles.divSeparator}></div>
-
-                            <div className="flex items-center">
-                                { moment(comment.created_at).fromNow() }
-                            </div>
-                        </div>
-                    </div>
-                    <CommentContent content={comment.content} />
-                    <CommentActions
-                        postId={postId}
-                        commentId={comment.id}
-                        upvotes={comment.upvotes}
-                        downvotes={comment.downvotes}
-                        repliesCount={comment.replies.length}
-                        isUpvoted={comment.action?.value === 1}
-                        isDownvoted={comment.action?.value === -1}
-                        isExpanded={comment.id !== activeReplyCommentId}
+                return <div className="mt-[15px]" key={comment.id}>
+                    <PublicationDetails
+                        publisher={{
+                            name: 'necodeus',
+                            path: '/autorzy/necodeus',
+                            picture: {
+                                '25x25': 'https://images.necodeo.com/1ad0fa37-17ad-4881-9ced-54d7718b35f5/25x25'
+                            }
+                        }}
+                        createdAt={comment.created_at}
                     />
-                    {comment.id === activeReplyCommentId && <div>
-                        {comment?.replies?.map((reply) => <CommentReply key={reply.id} reply={reply} />)}
-                        <CommentReplyInput />
-                    </div>}
+
+                    <div style={{ margin: '0 65px' }}>
+                        { comment.content }
+                    </div>
                 </div>
             })}
         </div>
