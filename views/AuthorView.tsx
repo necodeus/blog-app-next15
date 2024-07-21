@@ -118,13 +118,14 @@ export default function AuthorView(props: any) {
 
         <AsideContainer extraClasses="component-border-vertical">
           <CustomScrollbar>
+            <div></div>
             {/* <BasicSection extraClasses="component-border-bottom">
               <OtherPostsSection posts={[]} />
             </BasicSection> */}
             {/* ... */}
-            <BasicSection extraClasses="component-border-bottom">
+            {/* <BasicSection extraClasses="component-border-bottom">
               <ExternalLinkSection links={EXTERNAL_LINKS} />
-            </BasicSection>
+            </BasicSection> */}
           </CustomScrollbar>
         </AsideContainer>
       </>

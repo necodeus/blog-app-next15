@@ -191,14 +191,15 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
 
         <AsideContainer extraClasses="component-border-vertical">
           <CustomScrollbar>
-            {otherPosts?.length > 0 && (
+            <div></div>
+            {/* {otherPosts?.length > 0 && (
               <BasicSection extraClasses="component-border-bottom">
                 <OtherPostsSection posts={otherPosts} />
               </BasicSection>
             )}
             <BasicSection extraClasses="component-border-bottom">
               <ExternalLinkSection links={EXTERNAL_LINKS} />
-            </BasicSection>
+            </BasicSection> */}
           </CustomScrollbar>
         </AsideContainer>
       </div>
