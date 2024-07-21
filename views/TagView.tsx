@@ -28,9 +28,10 @@ export default function TagView(props: any) {
 
         <AsideContainer extraClasses="component-border-vertical">
           <CustomScrollbar>
-            <BasicSection extraClasses="component-border-bottom">
+            <div></div>
+            {/* <BasicSection extraClasses="component-border-bottom">
               <ExternalLinkSection links={EXTERNAL_LINKS} />
-            </BasicSection>
+            </BasicSection> */}
           </CustomScrollbar>
         </AsideContainer>
       </>

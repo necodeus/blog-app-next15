@@ -56,9 +56,10 @@ export default function IndexView({ posts }: HomeProps) {
 
       <AsideContainer extraClasses="component-border-vertical">
         <CustomScrollbar>
-          <BasicSection>
+          <div></div>
+          {/* <BasicSection>
             <ExternalLinkSection links={EXTERNAL_LINKS} />
-          </BasicSection>
+          </BasicSection> */}
         </CustomScrollbar>
       </AsideContainer>
     </>
