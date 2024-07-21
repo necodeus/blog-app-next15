@@ -92,12 +92,8 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
                 </>
               }
               width="var(--desktop-main-content-width)"
-              extraClasses="component-border-bottom"
             >
-              <BasicSection
-                width="var(--main-width)"
-                extraClasses="component-border-vertical"
-              >
+              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
                 <div>
                   {post?.id && (
                     <Header
@@ -112,26 +108,8 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
                   )}
                 </div>
               </BasicSection>
-            </SectionWrapper>
-            <SectionWrapper
-              aside={
-                <>
-                  {contentItems.length > 0 && (
-                    <StickySection width="334px">
-                      <div className="m-[7px]">
-                        <ContentNav items={contentItems} />
-                      </div>
-                    </StickySection>
-                  )}
-                </>
-              }
-              width="var(--desktop-main-content-width)"
-              extraClasses="component-border-bottom"
-            >
-              <BasicSection
-                width="var(--main-width)"
-                extraClasses="not-desktop"
-              >
+
+              <BasicSection width="var(--main-width)" extraClasses="not-desktop">
                 {contentItems.length > 0 && (
                   <div className="m-[7px]">
                     <ContentNav items={contentItems} />
@@ -139,51 +117,23 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
                 )}
               </BasicSection>
 
-              <BasicSection
-                width="var(--main-width)"
-                extraClasses="component-border-vertical overflow-hidden"
-              >
-                {post?.id && (
-                  <div className="component-border-bottom">
-                    <Content content={post?.content ?? ""} />
-                  </div>
-                )}
+              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom overflow-hidden">
+                {post?.id && <Content content={post?.content ?? ""} />}
+              </BasicSection>
 
+              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
                 {post?.id && <PostAuthor profile={postAuthor} />}
               </BasicSection>
-            </SectionWrapper>
 
-            <SectionWrapper
-              aside={
-                <>
-                  <StickySection width="334px">
-                    <div className="m-[7px]">
-                      <AdComponent
-                        dataAdFormat="auto"
-                        dataFullWidthResponsive={true}
-                        dataAdSlot="4284247248"
-                      />
-                    </div>
-                  </StickySection>
-                </>
-              }
-              width="var(--desktop-main-content-width)"
-              extraClasses="flex-grow"
-            >
-              <BasicSection
-                width="var(--main-width)"
-                extraClasses="component-border-vertical"
-              >
-                <div className="component-border-bottom">
-                  <SectionTitle containerClass="p-[30px] component-border-bottom">
-                      <b>Komentarze</b>
-                  </SectionTitle>
-                  <Comments
-                    isCommentsVisible={true}
-                    comments={comments}
-                    postId={post?.id}
-                  />
-                </div>
+              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
+                <SectionTitle containerClass="p-[30px] component-border-bottom">
+                    <b>Komentarze</b>
+                </SectionTitle>
+                <Comments
+                  isCommentsVisible={true}
+                  comments={comments}
+                  postId={post?.id}
+                />
               </BasicSection>
             </SectionWrapper>
           </CustomScrollbar>
@@ -192,14 +142,6 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
         <AsideContainer extraClasses="component-border-vertical">
           <CustomScrollbar>
             <div></div>
-            {/* {otherPosts?.length > 0 && (
-              <BasicSection extraClasses="component-border-bottom">
-                <OtherPostsSection posts={otherPosts} />
-              </BasicSection>
-            )}
-            <BasicSection extraClasses="component-border-bottom">
-              <ExternalLinkSection links={EXTERNAL_LINKS} />
-            </BasicSection> */}
           </CustomScrollbar>
         </AsideContainer>
       </div>

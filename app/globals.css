@@ -942,7 +942,7 @@
 }
 
 .custom-scrollbar-content {
-    height: calc(100vh  - var(--cs-pad-vertical));
+    height: calc(100vh  - var(--cs-pad-vertical) - 50px);
     @media (max-width: calc(800px - 1px)) {
         height: auto;
     }
