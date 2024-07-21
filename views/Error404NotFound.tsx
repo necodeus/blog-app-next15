@@ -9,8 +9,7 @@ import { ExternalLinkSection } from "@components/components/ExternalLinkSection/
 import { OtherPostsSection } from "@components/components/OtherPostsSection/OtherPostsSection";
 
 import { Header } from "@components/Error/Header";
-
-import { EXTERNAL_LINKS } from "./consts";
+import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
 
 export default function Error404NotFound(props: any) {
   const otherPosts: any = [];

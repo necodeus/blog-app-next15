@@ -36,7 +36,7 @@ export const Posts = ({ posts }: PostsProps) => {
                                 />
                             </picture>
                             <span className="ml-[10px] text-[16px]">
-                                <b className="font-semibold">{ post.author_name }</b>
+                                <b className="font-medium">{ post.author_name }</b>
                             </span>
                         </Link>
                         {post.created_at && <div className={styles.divSeparator}></div>}

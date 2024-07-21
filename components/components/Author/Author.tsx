@@ -15,7 +15,7 @@ export const PostAuthor = ({ profile }: Props) => {
         return null;
     }
 
-    return <div className="font-jost flex items-center text-[20px] p-[24px] bg-[#eee] rounded-[7px]">
+    return <div className="font-jost flex items-center text-[20px] p-[30px]">
         <picture>
             <img
                 className="mobile-photo min-w-[55px] max-w-[55px] min-h-[55px] max-h-[55px] bg-cover bg-center !rounded-[50%] bg-[#eee]"

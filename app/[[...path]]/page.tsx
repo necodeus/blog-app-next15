@@ -9,18 +9,22 @@ const IndexView = dynamic(() => import('@views/IndexView'));
 const PostView = dynamic(() => import('@views/PostView'));
 const AuthorIndexView = dynamic(() => import('@views/AuthorIndexView'));
 const AuthorView = dynamic(() => import('@views/AuthorView'));
-const CategoryPostListingView = dynamic(() => import('@views/CategoryPostListingView'));
-const TagPostListingView = dynamic(() => import('@views/TagPostListingView'));
+const CategoryView = dynamic(() => import('@views/CategoryView'));
+const TagView = dynamic(() => import('@views/TagView'));
+const ContactView = dynamic(() => import('@views/ContactView'));
+const ProjectsView = dynamic(() => import('@views/ProjectsView'));
 
-// import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 const PageComponents = {
-  INDEX: IndexView,
+  POSTS: IndexView,
   POST: PostView,
-  AUTHORS_INDEX: AuthorIndexView,
+  AUTHORS: AuthorIndexView,
   AUTHOR: AuthorView,
-  CATEGORY_POST_LISTING: CategoryPostListingView,
-  TAG_POST_LISTING: TagPostListingView,
+  CATEGORY: CategoryView,
+  TAG: TagView,
+  CONTACT: ContactView,
+  PROJECTS: ProjectsView,
   REDIRECTION: Redirection as any, // special case for redirection
 };
 
@@ -67,7 +71,7 @@ export default async function DynamicPage(props: DynamicPageProps): Promise<JSX.
   }
 
   if (!initialPageData?.url) {
-    return <Error404NotFound />
+    notFound();
   }
 
   const PageComponent = initialPageData?.url?.content_type && PageComponents[initialPageData.url.content_type];

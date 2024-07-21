@@ -53,10 +53,6 @@ export const Header = ({
                     <img className={styles.background} src={coverPicture?.['1200x4320']} loading="lazy" alt="" />
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
-                    <div className="m-[20px] absolute z-[1] right-0 top-0 flex">
-                        <Button link="/" color="blured" text="Wstecz" />
-                    </div>
-
                     <PublicationDetails
                         publisher={{
                             name: postAuthor.name,

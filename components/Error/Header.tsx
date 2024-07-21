@@ -17,10 +17,6 @@ export const Header = ({ code, message }: HeaderProps) => {
                         alt="error background"
                         loading="lazy"
                     />
-                    <div className="m-[20px] absolute z-[1] top-0 right-0 flex">
-                        <Button color="yellow" text="Daj głaski" extraClasses="mr-2" />
-                        <Button link="/" color="white" text="Wstecz" />
-                    </div>
                 </div>
             </div>
             <div className="component-border-bottom relative font-jost">

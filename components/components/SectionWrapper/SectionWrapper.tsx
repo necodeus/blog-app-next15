@@ -3,13 +3,15 @@ type SectionWrapperProps = {
     aside?: React.ReactNode;
     children: React.ReactNode;
     extraClasses?: string;
+    childrenClasses?: string;
 };
 
 export const SectionWrapper = ({
     width = 'auto',
     aside,
     children,
-    extraClasses,
+    extraClasses = '',
+    childrenClasses = '',
 }: SectionWrapperProps) => {
     const classes = ['flex', extraClasses].filter(Boolean).join(' ');
 
@@ -18,7 +20,7 @@ export const SectionWrapper = ({
             <div className="desktop flex flex-col items-end" style={{ width, minWidth: width }}>
                 { aside }
             </div>
-            <div className="w-full">
+            <div className={'w-full ' + childrenClasses}>
                 { children }
             </div>
         </div>

@@ -25,6 +25,12 @@ const nextConfig = {
     env,
     poweredByHeader: false,
     trailingSlash: false,
+    devIndicators: {
+        buildActivity: true,
+        buildActivityPosition: 'top-right',
+        appIsrStatus: true,
+    },
+    deploymentId: `${process.env.APP_ENV}-${Date.now()}`,
     // useFileSystemPublicRoutes: false,
 };
 

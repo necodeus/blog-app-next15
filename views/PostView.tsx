@@ -1,4 +1,3 @@
-
 import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
 import { StickySection } from "@components/components/StickySection/StickySection";
 import { BasicSection } from "@components/components/BasicSection/BasicSection";
@@ -12,11 +11,12 @@ import CustomScrollbar from "@components/components/CustomScrollbar/CustomScroll
 
 import { Header } from "@components/Post/components/Header/Header";
 import { Content } from "@components/Post/components/Content/Content";
-import { PostAuthor } from "@components/Post/components/Author/Author";
 import { Comments } from "@components/Post/components/Comments/Comments";
 
-import { EXTERNAL_LINKS } from "./consts";
 import Script from "next/script";
+import { PostAuthor } from "@components/components/Author/Author";
+import { Navigation } from "@components/components/Navigation/Navigation";
+import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
   const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, "");
@@ -65,129 +65,139 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
   const contentItems = extractMarkdownHeadersWithIds(post?.content ?? "");
 
   return (
-    <div>
-      <Script
+    <>
+      <Navigation />
+      <div>
+        <Script
           async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-google6`}
-          crossOrigin='anonymous'
-          strategy='afterInteractive'
-      />
-      <MainContainer extraClasses="lg:h-[100vh]">
-        <CustomScrollbar>
-          <SectionWrapper
-            aside={
-              <>
-                <StickySection width="334px">
-                  <div className="background m-[7px]">
-                    <AdComponent
-                      dataAdFormat="auto"
-                      dataFullWidthResponsive={true}
-                      dataAdSlot="4284247248"
-                    />
-                  </div>
-                </StickySection>
-              </>
-            }
-            width="var(--desktop-main-content-width)"
-            extraClasses="component-border-bottom"
-          >
-            <BasicSection
-              width="var(--main-width)"
-              extraClasses="component-border-vertical"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-7601886123256141`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+        <MainContainer extraClasses="lg:h-[100vh]">
+          <CustomScrollbar>
+            <SectionWrapper
+              aside={
+                <>
+                  <StickySection width="334px">
+                    <div className="background m-[7px]">
+                      <AdComponent
+                        dataAdFormat="auto"
+                        dataFullWidthResponsive={true}
+                        dataAdSlot="4284247248"
+                      />
+                    </div>
+                  </StickySection>
+                </>
+              }
+              width="var(--desktop-main-content-width)"
+              extraClasses="component-border-bottom"
             >
-              <div>
-                {post?.id && (
-                  <Header
-                    coverPicture={post.cover_picture}
-                    postAuthor={postAuthor}
-                    createdAt={post.created_at}
-                    name={post.title}
-                    rating={4.5}
-                    numberOfComments={post.comments_count}
-                    teaser={post.teaser}
-                  />
-                )}
-              </div>
-            </BasicSection>
-          </SectionWrapper>
-          <SectionWrapper
-            aside={
-              <>
-                {contentItems.length > 0 && <StickySection width="334px">
+              <BasicSection
+                width="var(--main-width)"
+                extraClasses="component-border-vertical"
+              >
+                <div>
+                  {post?.id && (
+                    <Header
+                      coverPicture={post.cover_picture}
+                      postAuthor={postAuthor}
+                      createdAt={post.created_at}
+                      name={post.title}
+                      rating={4.5}
+                      numberOfComments={post.comments_count}
+                      teaser={post.teaser}
+                    />
+                  )}
+                </div>
+              </BasicSection>
+            </SectionWrapper>
+            <SectionWrapper
+              aside={
+                <>
+                  {contentItems.length > 0 && (
+                    <StickySection width="334px">
+                      <div className="m-[7px]">
+                        <ContentNav items={contentItems} />
+                      </div>
+                    </StickySection>
+                  )}
+                </>
+              }
+              width="var(--desktop-main-content-width)"
+              extraClasses="component-border-bottom"
+            >
+              <BasicSection
+                width="var(--main-width)"
+                extraClasses="not-desktop"
+              >
+                {contentItems.length > 0 && (
                   <div className="m-[7px]">
                     <ContentNav items={contentItems} />
                   </div>
-                </StickySection>}
-              </>
-            }
-            width="var(--desktop-main-content-width)"
-            extraClasses="component-border-bottom"
-          >
-            <BasicSection width="var(--main-width)" extraClasses="not-desktop">
-              {contentItems.length > 0 && <div className="m-[7px]">
-                <ContentNav items={contentItems} />
-              </div>}
-            </BasicSection>
+                )}
+              </BasicSection>
 
-            <BasicSection
-              width="var(--main-width)"
-              extraClasses="component-border-vertical overflow-hidden"
-            >
-              {post?.id && <div className="component-border-bottom">
-                <Content content={post?.content ?? ""} />
-              </div>}
-
-              {post?.id && <div className="p-[7px]">
-                <PostAuthor profile={postAuthor} />
-              </div>}
-            </BasicSection>
-          </SectionWrapper>
-
-          <SectionWrapper
-            aside={
-              <>
-                <StickySection width="334px">
-                  <div className="m-[7px]">
-                    <AdComponent
-                      dataAdFormat="auto"
-                      dataFullWidthResponsive={true}
-                      dataAdSlot="4284247248"
-                    />
+              <BasicSection
+                width="var(--main-width)"
+                extraClasses="component-border-vertical overflow-hidden"
+              >
+                {post?.id && (
+                  <div className="component-border-bottom">
+                    <Content content={post?.content ?? ""} />
                   </div>
-                </StickySection>
-              </>
-            }
-            width="var(--desktop-main-content-width)"
-            extraClasses="flex-grow"
-          >
-            <BasicSection
-              width="var(--main-width)"
-              extraClasses="component-border-vertical h-full"
-            >
-              <div className="component-border-bottom">
-                <Comments
-                  isCommentsVisible={true}
-                  comments={comments}
-                  postId={post?.id}
-                />
-              </div>
-            </BasicSection>
-          </SectionWrapper>
-        </CustomScrollbar>
-      </MainContainer>
+                )}
 
-      <AsideContainer extraClasses="component-border-vertical">
-        <CustomScrollbar>
-          {otherPosts?.length > 0 && (
+                {post?.id && <PostAuthor profile={postAuthor} />}
+              </BasicSection>
+            </SectionWrapper>
+
+            <SectionWrapper
+              aside={
+                <>
+                  <StickySection width="334px">
+                    <div className="m-[7px]">
+                      <AdComponent
+                        dataAdFormat="auto"
+                        dataFullWidthResponsive={true}
+                        dataAdSlot="4284247248"
+                      />
+                    </div>
+                  </StickySection>
+                </>
+              }
+              width="var(--desktop-main-content-width)"
+              extraClasses="flex-grow"
+            >
+              <BasicSection
+                width="var(--main-width)"
+                extraClasses="component-border-vertical h-full"
+              >
+                <div className="component-border-bottom">
+                  <Comments
+                    isCommentsVisible={true}
+                    comments={comments}
+                    postId={post?.id}
+                  />
+                </div>
+              </BasicSection>
+            </SectionWrapper>
+          </CustomScrollbar>
+        </MainContainer>
+
+        <AsideContainer extraClasses="component-border-vertical">
+          <CustomScrollbar>
+            {otherPosts?.length > 0 && (
+              <BasicSection extraClasses="component-border-bottom">
+                <OtherPostsSection posts={otherPosts} />
+              </BasicSection>
+            )}
             <BasicSection extraClasses="component-border-bottom">
-              <OtherPostsSection posts={otherPosts} />
+              <ExternalLinkSection links={EXTERNAL_LINKS} />
             </BasicSection>
-          )}
-          <BasicSection extraClasses="component-border-bottom">
-            <ExternalLinkSection links={EXTERNAL_LINKS} />
-          </BasicSection>
-        </CustomScrollbar>
-      </AsideContainer>
-    </div>
+          </CustomScrollbar>
+        </AsideContainer>
+      </div>
+    </>
   );
 }
