@@ -35,9 +35,7 @@ export const Comments = ({
     isCommentsVisible,
 }: CommentsProps) => {
     return (
-        <div className="font-jost py-[30px] text-[17px] h-full">
-            <SectionTitle withMargin><b>Komentarze</b></SectionTitle>
-
+        <div className="font-jost py-[30px] text-[17px]">
             {comments?.length > 0 && <CommentList postId={postId} comments={comments} />}
 
             {isCommentsVisible && comments?.length === 0 && <CommentListEmpty />}

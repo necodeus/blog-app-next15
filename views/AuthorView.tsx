@@ -76,8 +76,10 @@ export default function AuthorView(props: any) {
               extraClasses="flex-grow"
               childrenClasses="flex-grow flex flex-col"
             >
-              {/* ... */}
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom overflow-hidden">
+                <SectionTitle containerClass="p-[30px] component-border-bottom">
+                  <h1><b>Wpisy </b>autora</h1>
+                </SectionTitle>
                 <div className="font-jost">
                   <div className="component-padding relative bg-white">
                       <div className="font-jost flex items-center text-[20px] rounded-[7px]">
@@ -87,8 +89,6 @@ export default function AuthorView(props: any) {
                         <div className="ml-[20px]">
                             <div className="flex items-center">
                               <div className="font-medium">necodeus</div>
-                              <div className={styles.divSeparator}></div>
-                              <div className="text-[17px]">{postCount} wpisy</div>
                             </div>
                             <div className="mt-[2px] text-[16px]">Software Developer</div>
                         </div>
@@ -98,9 +98,6 @@ export default function AuthorView(props: any) {
               </BasicSection>
               {/* ... */}
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical pt-[30px] font-jost pb-[30px] flex-grow">
-                <SectionTitle withMargin>
-                  <h1><b>Wpisy </b>autora</h1>
-                </SectionTitle>
                 <div className={"grid mx-[30px] gap-[25px] " + styles.responsiveGrid}>
                   {posts.map((post: any) => (
                     <div key={post.id}>

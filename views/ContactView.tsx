@@ -7,6 +7,7 @@ import { SectionWrapper } from "@components/components/SectionWrapper/SectionWra
 
 import { Navigation } from "@components/components/Navigation/Navigation";
 import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
+import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
 
 export default function ContactView(props: any) {
     return (
@@ -20,8 +21,12 @@ export default function ContactView(props: any) {
               childrenClasses="flex-grow flex flex-col"
             >
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom overflow-hidden">
-                ContactView
+                <SectionTitle containerClass="p-[30px] component-border-bottom">
+                  <h1><b>Kontakt</b></h1>
+                </SectionTitle>
+                <div className="p-[30px]">...</div>
               </BasicSection>
+              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical overflow-hidden flex-grow"></BasicSection>
             </SectionWrapper>
           </CustomScrollbar>
         </MainContainer>
