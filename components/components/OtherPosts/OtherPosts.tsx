@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import { SectionTitle } from "@components/components/SectionTitle/SectionTitle"
 
-import styles from './OtherPostsSection.module.css';
+import styles from './OtherPosts.module.css';
 
-export const OtherPostsSection = ({ posts }: any) => {
+export const OtherPosts = ({ posts }: any) => {
 	return (
 		<>
 			<SectionTitle containerClass="p-[30px] component-border-bottom">

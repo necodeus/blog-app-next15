@@ -1,22 +1,20 @@
 import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { StickySection } from "@components/components/StickySection/StickySection";
 import { BasicSection } from "@components/components/BasicSection/BasicSection";
 import { ContentNav } from "@components/components/ContentNav/ContentNav";
-import { ExternalLinkSection } from "@components/components/ExternalLinkSection/ExternalLinkSection";
-import { OtherPostsSection } from "@components/components/OtherPostsSection/OtherPostsSection";
+import { ExternalLinks } from "@components/components/ExternalLinks/ExternalLinks";
+import { OtherPosts } from "@components/components/OtherPosts/OtherPosts";
 import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
 import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import AdComponent from "@components/components/AdComponent/AdComponent";
+import Advertisement from "@components/components/Advertisement/Advertisement";
 import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
 
-import { Header } from "@components/Post/components/Header/Header";
-import { Content } from "@components/Post/components/Content/Content";
-import { Comments } from "@components/Post/components/Comments/Comments";
-
+import { PostHeader } from "@components/components/PostHeader/PostHeader";
+import { PostContent } from "@components/components/PostContent/PostContent";
+ 
 import Script from "next/script";
-import { PostAuthor } from "@components/components/Author/Author";
+import { PostAuthor } from "@components/components/PostAuthor/PostAuthor";
 import { Navigation } from "@components/components/Navigation/Navigation";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
+import { EXTERNAL_LINKS } from "@components/components/ExternalLinks/consts";
 import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
@@ -77,26 +75,11 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
       <div>
         <MainContainer extraClasses="lg:h-[100vh]">
           <CustomScrollbar>
-            <SectionWrapper
-              aside={
-                <>
-                  <StickySection width="334px">
-                    <div className="background m-[7px]">
-                      <AdComponent
-                        dataAdFormat="auto"
-                        dataFullWidthResponsive={true}
-                        dataAdSlot="4284247248"
-                      />
-                    </div>
-                  </StickySection>
-                </>
-              }
-              width="var(--desktop-main-content-width)"
-            >
+            <SectionWrapper width="var(--desktop-main-content-width)">
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
                 <div>
                   {post?.id && (
-                    <Header
+                    <PostHeader
                       coverPicture={post.cover_picture}
                       postAuthor={postAuthor}
                       createdAt={post.created_at}
@@ -118,22 +101,11 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
               </BasicSection>
 
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom overflow-hidden">
-                {post?.id && <Content content={post?.content ?? ""} />}
+                {post?.id && <PostContent content={post?.content ?? ""} />}
               </BasicSection>
 
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
                 {post?.id && <PostAuthor profile={postAuthor} />}
-              </BasicSection>
-
-              <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
-                <SectionTitle containerClass="p-[30px] component-border-bottom">
-                    <b>Komentarze</b>
-                </SectionTitle>
-                <Comments
-                  isCommentsVisible={true}
-                  comments={comments}
-                  postId={post?.id}
-                />
               </BasicSection>
             </SectionWrapper>
           </CustomScrollbar>
@@ -141,7 +113,12 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
 
         <AsideContainer extraClasses="component-border-vertical">
           <CustomScrollbar>
-            <div></div>
+            {otherPosts.length > 0 && <BasicSection extraClasses="component-border-bottom">
+              <OtherPosts posts={otherPosts} />
+            </BasicSection>}
+            <BasicSection extraClasses="component-border-bottom">
+              <ExternalLinks links={EXTERNAL_LINKS} />
+            </BasicSection>
           </CustomScrollbar>
         </AsideContainer>
       </div>

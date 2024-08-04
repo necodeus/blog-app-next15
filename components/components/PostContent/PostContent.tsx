@@ -10,7 +10,7 @@ import hljs from 'highlight.js'
 
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
 
-export const Content = ({ content }: any) => {
+export const PostContent = ({ content }: any) => {
     const md = new MarkdownIt({
         highlight: function (str: string, lang: string) {
             const code = hljs.highlight(str, {

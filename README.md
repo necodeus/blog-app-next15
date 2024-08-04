@@ -1,11 +1,8 @@
-# Blog
+# Blog (Next 15)
 
-# I often break my personal projects and push code that I normally wouldn't at work, so please use it for educational purposes only.
+[![Release](https://github.com/necodeus/blog-app-next15/actions/workflows/release.yml/badge.svg?branch=production)](https://github.com/necodeus/blog-app-next15/actions/workflows/release.yml)
 
-# IT WILL BE REWRITTEN TO ASTRO:
-https://github.com/necodeus/blog-app-astro
-
-## Development with production API
+## Development with remote API
 
 ```
 nvm use
@@ -22,10 +19,6 @@ APP_ENV=development npm run dev
 APP_ENV=local npm run dev
 ```
 
-API:
-https://github.com/necodeus/blog-api-laravel
+## Live Preview
 
-```
-composer install
-php artisan serve
-```
+https://blog-app-next-dev.necodeo.com/

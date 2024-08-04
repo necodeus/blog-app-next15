@@ -3,7 +3,7 @@
 import moment from "moment"
 import 'moment/locale/pl';
 
-import styles from './Posts.module.css';
+import styles from './PostsList.module.css';
 import Link from "next/link";
 
 type PostsProps = {
@@ -20,7 +20,7 @@ type PostsProps = {
     }[];
 };
 
-export const Posts = ({ posts }: PostsProps) => {
+export const PostsList = ({ posts }: PostsProps) => {
     return (
         <ul className="font-jost inline-flex flex-col gap-[30px]">
             {posts?.map((post) => {

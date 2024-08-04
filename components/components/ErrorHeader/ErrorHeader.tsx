@@ -1,13 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-
-import { Button } from "@components/components/Button/Button";
-
 type HeaderProps = {
     code: number;
     message: string;
 };
 
-export const Header = ({ code, message }: HeaderProps) => {
+export const ErrorHeader = ({ code, message }: HeaderProps) => {
     return (
         <>
             <div className="relative font-jost component-border-bottom">

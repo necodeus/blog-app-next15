@@ -9,7 +9,7 @@ type Props = {
 	}[];
 };
 
-export const ExternalLinkSection = ({ links }: Props) => {
+export const ExternalLinks = ({ links }: Props) => {
 	return (
 		<>
 			<SectionTitle containerClass="p-[30px] component-border-bottom">

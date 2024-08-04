@@ -2,11 +2,10 @@
 
 import { numberToPolishNumeral } from '@utils/strings/numerals';
 
-import { Button } from '@components/components/Button/Button';
 import { Stars } from '@components/components/Stars/Stars';
 import { PublicationDetails } from '@components/components/PublicationDetails/PublicationDetails';
 
-import styles from './Header.module.css';
+import styles from './PostHeader.module.css';
 
 type Props = {
     coverPicture: {
@@ -28,7 +27,7 @@ type Props = {
     teaser: string;
 };
 
-export const Header = ({
+export const PostHeader = ({
     coverPicture,
     postAuthor,
     createdAt,

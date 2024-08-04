@@ -8,7 +8,7 @@ type AdBannerTypes = {
   dataFullWidthResponsive: boolean;
 };
 
-const AdComponent = ({
+const Advertisement = ({
   dataAdSlot,
   dataAdFormat,
   dataFullWidthResponsive,
@@ -36,4 +36,4 @@ const AdComponent = ({
   );
 };
 
-export default AdComponent;
+export default Advertisement;

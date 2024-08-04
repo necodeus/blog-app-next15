@@ -3,12 +3,12 @@ import { BasicSection } from "@components/components/BasicSection/BasicSection";
 import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
 import { MainContainer } from "@components/components/MainContainer/MainContainer";
 import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { ExternalLinkSection } from "@components/components/ExternalLinkSection/ExternalLinkSection";
+import { ExternalLinks } from "@components/components/ExternalLinks/ExternalLinks";
 
-import { Posts } from "@components/Index/components/Posts/Posts";
+import { PostsList } from "@components/components/PostsList/PostsList";
 
 import { Navigation } from "@components/components/Navigation/Navigation";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
+import { EXTERNAL_LINKS } from "@components/components/ExternalLinks/consts";
 import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
 
 type HomeProps = {
@@ -46,7 +46,7 @@ export default function IndexView({ posts }: HomeProps) {
                 <h1><b>Artykuły</b></h1>
               </SectionTitle>
               <div className="component-padding component-border-bottom">
-                <Posts posts={posts} />
+                <PostsList posts={posts} />
               </div>
             </BasicSection>
             <BasicSection width="var(--main-width)" extraClasses="component-border-vertical overflow-hidden flex-grow"></BasicSection>
@@ -56,10 +56,9 @@ export default function IndexView({ posts }: HomeProps) {
 
       <AsideContainer extraClasses="component-border-vertical">
         <CustomScrollbar>
-          <div></div>
-          {/* <BasicSection>
-            <ExternalLinkSection links={EXTERNAL_LINKS} />
-          </BasicSection> */}
+          <BasicSection>
+            <ExternalLinks links={EXTERNAL_LINKS} />
+          </BasicSection>
         </CustomScrollbar>
       </AsideContainer>
     </>
