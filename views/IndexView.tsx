@@ -1,15 +1,15 @@
-import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
-import { BasicSection } from "@components/components/BasicSection/BasicSection";
-import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
-import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { ExternalLinks } from "@components/components/ExternalLinks/ExternalLinks";
+import { AsideContainer } from "@components/AsideContainer/AsideContainer";
+import { BasicSection } from "@components/BasicSection/BasicSection";
+import Scrollbar from "@components/Scrollbar/Scrollbar";
+import { MainContainer } from "@components/MainContainer/MainContainer";
+import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
+import { AsideLinks } from "@components/AsideLinks/AsideLinks";
 
-import { PostsList } from "@components/components/PostsList/PostsList";
+import { PostsListing } from "@components/PostsListing/PostsListing";
 
-import { Navigation } from "@components/components/Navigation/Navigation";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinks/consts";
-import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
+import { TopNavbar } from "@components/TopNavbar/TopNavbar";
+import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
+import { SectionTitle } from "@components/SectionTitle/SectionTitle";
 
 type HomeProps = {
   posts: {
@@ -28,10 +28,10 @@ type HomeProps = {
 export default function IndexView({ posts }: HomeProps) {
   return (
     <>
-      <Navigation />
+      <TopNavbar />
 
       <MainContainer extraClasses="lg:h-[100vh]">
-        <CustomScrollbar>
+        <Scrollbar>
           <SectionWrapper
             width="var(--desktop-main-content-width)"
             extraClasses="flex-grow"
@@ -46,20 +46,19 @@ export default function IndexView({ posts }: HomeProps) {
                 <h1><b>Artykuły</b></h1>
               </SectionTitle>
               <div className="component-padding component-border-bottom">
-                <PostsList posts={posts} />
+                <PostsListing posts={posts} />
               </div>
             </BasicSection>
             <BasicSection width="var(--main-width)" extraClasses="component-border-vertical overflow-hidden flex-grow"></BasicSection>
           </SectionWrapper>
-        </CustomScrollbar>
+        </Scrollbar>
       </MainContainer>
 
       <AsideContainer extraClasses="component-border-vertical">
-        <CustomScrollbar>
+        <Scrollbar>
           <BasicSection>
-            <ExternalLinks links={EXTERNAL_LINKS} />
           </BasicSection>
-        </CustomScrollbar>
+        </Scrollbar>
       </AsideContainer>
     </>
 

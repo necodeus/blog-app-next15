@@ -2,8 +2,8 @@
 
 import { numberToPolishNumeral } from '@utils/strings/numerals';
 
-import { Stars } from '@components/components/Stars/Stars';
-import { PublicationDetails } from '@components/components/PublicationDetails/PublicationDetails';
+import { Stars } from '@components/Stars/Stars';
+import { PublicationDetails } from '@components/PublicationDetails/PublicationDetails';
 
 import styles from './PostHeader.module.css';
 

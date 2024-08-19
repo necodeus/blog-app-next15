@@ -1,19 +1,19 @@
-import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
-import { BasicSection } from "@components/components/BasicSection/BasicSection";
-import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
-import { ExternalLinkSection } from "@components/components/ExternalLinkSection/ExternalLinkSection";
-import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
+import { AsideContainer } from "@components/AsideContainer/AsideContainer";
+import { BasicSection } from "@components/BasicSection/BasicSection";
+import Scrollbar from "@components/Scrollbar/Scrollbar";
+import { AsideLinks } from "@components/AsideLinks/AsideLinks";
+import { MainContainer } from "@components/MainContainer/MainContainer";
+import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
 
-import { Navigation } from "@components/components/Navigation/Navigation";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinkSection/consts";
+import { TopNavbar } from "@components/TopNavbar/TopNavbar";
+import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
 
 export default function TagView(props: any) {
     return (
       <>
-        <Navigation />
+        <TopNavbar />
         <MainContainer extraClasses="lg:h-[100vh]">
-          <CustomScrollbar>
+          <Scrollbar>
             <SectionWrapper
               width="var(--desktop-main-content-width)"
               extraClasses="flex-grow"
@@ -23,16 +23,14 @@ export default function TagView(props: any) {
                 TagView
               </BasicSection>
             </SectionWrapper>
-          </CustomScrollbar>
+          </Scrollbar>
         </MainContainer>
 
         <AsideContainer extraClasses="component-border-vertical">
-          <CustomScrollbar>
-            <div></div>
-            {/* <BasicSection extraClasses="component-border-bottom">
-              <ExternalLinkSection links={EXTERNAL_LINKS} />
-            </BasicSection> */}
-          </CustomScrollbar>
+          <Scrollbar>
+            <BasicSection extraClasses="component-border-bottom">
+            </BasicSection>
+          </Scrollbar>
         </AsideContainer>
       </>
     );

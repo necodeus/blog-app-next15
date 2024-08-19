@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 
-const useCustomScrollbar = () => {
+const useScrollbar = () => {
   const contentRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
   const thumbRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
   const [thumbHeight, setThumbHeight] = useState(0);
@@ -63,4 +63,4 @@ const useCustomScrollbar = () => {
   };
 };
 
-export default useCustomScrollbar;
+export default useScrollbar;

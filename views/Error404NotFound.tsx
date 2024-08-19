@@ -1,23 +1,22 @@
 'use client';
 
-import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
-import { BasicSection } from "@components/components/BasicSection/BasicSection";
-import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
-import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { ExternalLinks } from "@components/components/ExternalLinks/ExternalLinks";
-import { OtherPosts } from "@components/components/OtherPosts/OtherPosts";
+import { AsideContainer } from "@components/AsideContainer/AsideContainer";
+import { BasicSection } from "@components/BasicSection/BasicSection";
+import Scrollbar from "@components/Scrollbar/Scrollbar";
+import { MainContainer } from "@components/MainContainer/MainContainer";
+import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
+import { AsidePopularPosts } from "@components/AsidePopularPosts/AsidePopularPosts";
 
-import { ErrorHeader } from "@components/components/ErrorHeader/ErrorHeader";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinks/consts";
+import { ErrorHeader } from "@components/ErrorHeader/ErrorHeader";
+
+import { AsideLinks } from "@components/AsideLinks/AsideLinks";
+import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
 
 export default function Error404NotFound(props: any) {
-  const otherPosts: any = [];
-
   return (
     <>
       <MainContainer>
-        <CustomScrollbar>
+        <Scrollbar>
           <SectionWrapper width="var(--desktop-main-content-width)">
             <BasicSection
               width="var(--main-width)"
@@ -26,19 +25,17 @@ export default function Error404NotFound(props: any) {
               <ErrorHeader code={404} message="Strona nie została znaleziona!" />
             </BasicSection>
           </SectionWrapper>
-        </CustomScrollbar>
+        </Scrollbar>
       </MainContainer>
 
       <AsideContainer extraClasses="component-border-vertical">
-        <CustomScrollbar>
-          <div></div>
+        <Scrollbar>
           <BasicSection extraClasses="component-border-bottom">
-            <OtherPosts posts={[]} />
+            <AsidePopularPosts posts={[]} />
           </BasicSection>
           <BasicSection extraClasses="component-border-bottom">
-            <ExternalLinks links={EXTERNAL_LINKS} />
           </BasicSection>
-        </CustomScrollbar>
+        </Scrollbar>
       </AsideContainer>
     </>
   );

@@ -1,4 +1,4 @@
-import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
+import { SectionTitle } from "@components/SectionTitle/SectionTitle";
 
 type Props = {
 	links: {
@@ -9,13 +9,13 @@ type Props = {
 	}[];
 };
 
-export const ExternalLinks = ({ links }: Props) => {
+export const AsideLinks = ({ links }: Props) => {
 	return (
 		<>
 			<SectionTitle containerClass="p-[30px] component-border-bottom">
 				<b>Linki</b> zewnętrzne
 			</SectionTitle>
-			<div className="external-links component-padding font-jost">
+			<div className="external-links component-padding font-jost component-border-bottom">
 				<ul className="flex flex-col gap-[30px]">
 					{links?.map((link) => <li key={link.id}>
 						<a

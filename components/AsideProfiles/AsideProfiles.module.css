@@ -1,0 +1,47 @@
+@media (max-width: 900px) {
+    .profiles {
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .profiles > div.ul {
+        display: flex;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .profiles > div.ul > div:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .profiles > div.ul {
+        display: block;
+    }
+}
+
+.wrapper > a {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+}
+
+.wrapper > a:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.wrapper > a > div {
+    margin-left: 10px;
+    word-wrap: anywhere;
+}
+
+.image {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    background-size: cover;
+    background-position: center;
+}

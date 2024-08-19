@@ -1,21 +1,18 @@
-import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { BasicSection } from "@components/components/BasicSection/BasicSection";
-import { ContentNav } from "@components/components/ContentNav/ContentNav";
-import { ExternalLinks } from "@components/components/ExternalLinks/ExternalLinks";
-import { OtherPosts } from "@components/components/OtherPosts/OtherPosts";
-import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
-import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import Advertisement from "@components/components/Advertisement/Advertisement";
-import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
-
-import { PostHeader } from "@components/components/PostHeader/PostHeader";
-import { PostContent } from "@components/components/PostContent/PostContent";
- 
 import Script from "next/script";
-import { PostAuthor } from "@components/components/PostAuthor/PostAuthor";
-import { Navigation } from "@components/components/Navigation/Navigation";
-import { EXTERNAL_LINKS } from "@components/components/ExternalLinks/consts";
-import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
+
+import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
+import { BasicSection } from "@components/BasicSection/BasicSection";
+import { PostNavigation } from "@components/PostNavigation/PostNavigation";
+import { AsideLinks } from "@components/AsideLinks/AsideLinks";
+import { AsidePopularPosts } from "@components/AsidePopularPosts/AsidePopularPosts";
+import { AsideContainer } from "@components/AsideContainer/AsideContainer";
+import { MainContainer } from "@components/MainContainer/MainContainer";
+import Scrollbar from "@components/Scrollbar/Scrollbar";
+import { PostHeader } from "@components/PostHeader/PostHeader";
+import { PostContent } from "@components/PostContent/PostContent";
+import { PostAuthor } from "@components/PostAuthor/PostAuthor";
+import { TopNavbar } from "@components/TopNavbar/TopNavbar";
+import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
   const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, "");
@@ -65,7 +62,7 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
 
   return (
     <>
-      <Navigation />
+      <TopNavbar />
       <Script
         async
         src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-7601886123256141`}
@@ -74,7 +71,7 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
       />
       <div>
         <MainContainer extraClasses="lg:h-[100vh]">
-          <CustomScrollbar>
+          <Scrollbar>
             <SectionWrapper width="var(--desktop-main-content-width)">
               <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom">
                 <div>
@@ -95,7 +92,7 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
               <BasicSection width="var(--main-width)" extraClasses="not-desktop">
                 {contentItems.length > 0 && (
                   <div className="m-[7px]">
-                    <ContentNav items={contentItems} />
+                    <PostNavigation items={contentItems} />
                   </div>
                 )}
               </BasicSection>
@@ -108,18 +105,17 @@ export default function PostView({ post, postAuthor, otherPosts }: any) {
                 {post?.id && <PostAuthor profile={postAuthor} />}
               </BasicSection>
             </SectionWrapper>
-          </CustomScrollbar>
+          </Scrollbar>
         </MainContainer>
 
         <AsideContainer extraClasses="component-border-vertical">
-          <CustomScrollbar>
+          <Scrollbar>
             {otherPosts.length > 0 && <BasicSection extraClasses="component-border-bottom">
-              <OtherPosts posts={otherPosts} />
+              <AsidePopularPosts posts={otherPosts} />
             </BasicSection>}
             <BasicSection extraClasses="component-border-bottom">
-              <ExternalLinks links={EXTERNAL_LINKS} />
             </BasicSection>
-          </CustomScrollbar>
+          </Scrollbar>
         </AsideContainer>
       </div>
     </>

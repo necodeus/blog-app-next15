@@ -1,21 +1,24 @@
 import Link from "next/link";
 
-import CustomScrollbar from "@components/components/CustomScrollbar/CustomScrollbar";
-import { AsideContainer } from "@components/components/AsideContainer/AsideContainer";
-import { BasicSection } from "@components/components/BasicSection/BasicSection";
-import { MainContainer } from "@components/components/MainContainer/MainContainer";
-import { SectionWrapper } from "@components/components/SectionWrapper/SectionWrapper";
-import { SectionTitle } from "@components/components/SectionTitle/SectionTitle";
-import { Navigation } from "@components/components/Navigation/Navigation";
+import Scrollbar from "@components/Scrollbar/Scrollbar";
+import { AsideContainer } from "@components/AsideContainer/AsideContainer";
+import { BasicSection } from "@components/BasicSection/BasicSection";
+import { MainContainer } from "@components/MainContainer/MainContainer";
+import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
+import { SectionTitle } from "@components/SectionTitle/SectionTitle";
+import { TopNavbar } from "@components/TopNavbar/TopNavbar";
 
 import styles from './AuthorView.module.css';
+import { AsideProfiles } from "@components/AsideProfiles/AsideProfiles";
+import { AsideLinks } from "@components/AsideLinks/AsideLinks";
+import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
 
 export default function AuthorView({ author, posts }: any) {
   return (
     <>
-      <Navigation />
+      <TopNavbar />
       <MainContainer extraClasses="lg:h-[100vh]">
-        <CustomScrollbar>
+        <Scrollbar>
           <SectionWrapper
             width="var(--desktop-main-content-width)"
             extraClasses="flex-grow"
@@ -47,8 +50,10 @@ export default function AuthorView({ author, posts }: any) {
                 {posts.map((post: any) => (
                   <Link href={post.path || ''} key={post.id}>
                     <div className="relative mb-[18px]">
-                      <div className="absolute left-[-10px] bg-[#fff] top-[15px] border-[1px] border-solid border-[#cfcfcf] text-[11px] p-[5px_12px] uppercase font-[600] tracking-[2px]">{post.tagName}</div>
-                      <img className="rounded-[7px]" src={post.image} />
+                      <div className="absolute left-[-10px] bg-[#fff] top-[15px] border-[1px] border-solid border-[#cfcfcf] text-[11px] p-[5px_12px] uppercase font-[600] tracking-[2px]">
+                        {post.tagName}
+                      </div>
+                      <img className="h-[150px] object-cover" src={post.image} />
                     </div>
                     <div className="text-[20px] font-[500] mb-[2px]">{post.title}</div>
                   </Link>
@@ -57,13 +62,15 @@ export default function AuthorView({ author, posts }: any) {
               {posts?.length === 0 && <div className="px-[30px] pb-[30px] component-border-bottom">Brak wpisów</div>}
             </BasicSection>
           </SectionWrapper>
-        </CustomScrollbar>
+        </Scrollbar>
       </MainContainer>
 
       <AsideContainer extraClasses="component-border-vertical">
-        <CustomScrollbar>
-          <div></div>
-        </CustomScrollbar>
+        <Scrollbar>
+          <AsideProfiles />
+          <AsideLinks links={EXTERNAL_LINKS} />
+          {/* <AsideSpotify /> */}
+        </Scrollbar>
       </AsideContainer>
     </>
   );

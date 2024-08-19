@@ -1,9 +1,9 @@
 'use client';
 
 import React from "react";
-import useCustomScrollbar from "@hooks/useCustomScrollbar";
+import useScrollbar from "@hooks/useScrollbar";
 
-const CustomScrollbar: React.FC<{ children: React.ReactNode }> = ({
+const Scrollbar: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const {
@@ -13,7 +13,7 @@ const CustomScrollbar: React.FC<{ children: React.ReactNode }> = ({
     handleScroll,
     handleThumbMouseDown,
     isScrollable,
-  } = useCustomScrollbar();
+  } = useScrollbar();
 
   return (
     <div className="custom-scrollbar">
@@ -38,4 +38,4 @@ const CustomScrollbar: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export default CustomScrollbar;
+export default Scrollbar;

@@ -24,7 +24,7 @@ const links = [
   },
 ];
 
-export const Navigation = () => {
+export const TopNavbar = () => {
     const pathname = usePathname();
 
   return (
