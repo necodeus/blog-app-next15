@@ -26,7 +26,7 @@ export default function AuthorView({ author, posts }: any) {
           >
             <BasicSection width="var(--main-width)" extraClasses="component-border-vertical component-border-bottom overflow-hidden">
               <SectionTitle containerClass="p-[30px] component-border-bottom">
-                <h1><b>Wpisy </b>autora</h1>
+                <h1><b>Profil </b>autora</h1>
               </SectionTitle>
               <div className="font-jost">
                 <div className="component-padding relative bg-white">

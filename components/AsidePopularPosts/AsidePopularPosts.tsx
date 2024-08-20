@@ -9,7 +9,7 @@ export const AsidePopularPosts = ({ posts }: any) => {
 	return (
 		<>
 			<SectionTitle containerClass="p-[30px] component-border-bottom">
-				<b>Inne</b> wpisy
+				<b>Popularne</b> wpisy
 			</SectionTitle>
 			<div className="component-padding font-jost relative">
 				<ul>
