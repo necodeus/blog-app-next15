@@ -35,7 +35,7 @@ jobs:
           RELEASE_ID: ${{ steps.cr.outputs.release_id }}
         run: |
           cd build
-          tar -czf ../blog-app-astro-${{ github.ref_name }}.tar.gz * .??*
+          tar -czf ../blog-app-next-${{ github.ref_name }}.tar.gz * .??*
 
       - name: upload
         env:
