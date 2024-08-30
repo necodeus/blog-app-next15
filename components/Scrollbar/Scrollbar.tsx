@@ -1,11 +1,15 @@
 'use client';
 
-import React from "react";
-import useScrollbar from "@hooks/useScrollbar";
+import { ReactNode, ReactElement } from "react";
+import useScrollbar from "@/hooks/useScrollbar";
 
-const Scrollbar: React.FC<{ children: React.ReactNode }> = ({
+type Props = {
+  children?: ReactNode;
+};
+
+export const Scrollbar = ({
   children,
-}) => {
+}: Props): ReactElement => {
   const {
     contentRef,
     thumbRef,
@@ -15,6 +19,8 @@ const Scrollbar: React.FC<{ children: React.ReactNode }> = ({
     isScrollable,
   } = useScrollbar();
 
+  const width = isScrollable ? 'calc(100% - 4px)' : '100%';
+
   return (
     <div className="custom-scrollbar">
       <div
@@ -22,7 +28,9 @@ const Scrollbar: React.FC<{ children: React.ReactNode }> = ({
         ref={contentRef}
         onScroll={handleScroll}
       >
-        {children}
+        <div style={{ width }}>
+          {children}
+        </div>
       </div>
       {isScrollable && (
         <div className="custom-scrollbar-track">
@@ -37,5 +45,3 @@ const Scrollbar: React.FC<{ children: React.ReactNode }> = ({
     </div>
   );
 };
-
-export default Scrollbar;

@@ -27,15 +27,3 @@
     display: flex;
     opacity: 0.5;
 }
-
-.responsiveGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    @media (max-width: calc(800px + 334px + 334px - 1px)) {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    @media (max-width: calc(800px - 1px)) {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-}

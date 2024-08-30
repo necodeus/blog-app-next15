@@ -22,7 +22,7 @@ type PostsProps = {
 
 export const PostsListing = ({ posts }: PostsProps) => {
     return (
-        <ul className="font-jost inline-flex flex-col gap-[30px]">
+        <ul className="font-jost inline-flex flex-col gap-[30px] p-[30px] component-border-bottom w-full">
             {posts?.map((post) => {
                 return <li key={post.id}>
                     <div className="flex items-center">

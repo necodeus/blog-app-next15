@@ -5,7 +5,7 @@ import styles from './PublicationDetails.module.css';
 
 export const PublicationDetails = ({ publisher, createdAt }: any) => {
 	return (
-        <div className="component-padding relative !py-0 flex items-center mb-[10px]">
+        <div className="p-[30px] relative !py-0 flex items-center mb-[10px]">
             {publisher && <>
                 <Link href={publisher.path || ''} className="flex items-center">
                     <img

@@ -1,9 +1,4 @@
-
-.asideContainer {
-    right: 0;
-    position: var(--desktop-aside-position);
-    width: var(--desktop-aside-width);
-    height: var(--desktop-aside-height);
-    overflow-y: auto;
-    overflow-x: hidden;
+.container {
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
 }

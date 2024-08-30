@@ -3,29 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import Logo from "../Logo/Logo";
+import { Logo } from '@/components';
 
-const links = [
-  {
-    href: "/",
-    label: "Artykuły",
-  },
-  {
-    href: "/autorzy",
-    label: "Autorzy",
-  },
-  {
-    href: "/projekty",
-    label: "Projekty",
-  },
-  {
-    href: "/kontakt",
-    label: "Kontakt",
-  },
-];
-
-export const TopNavbar = () => {
-    const pathname = usePathname();
+export const TopNavbar = ({ items = [] }: any) => {
+  if (!items.length) {
+    return null;
+  }
 
   return (
     <div className="component-border-bottom flex font-jost text-[16px] h-[50px]">
@@ -38,11 +21,14 @@ export const TopNavbar = () => {
         }}
       >
         <Logo className="mr-[20px]" height={25} />
-        {links.map(({ href, label }) => (
-          <Link className={
-            pathname === href ? "font-medium" : undefined
-          } key={href} href={href}>
-            {label}
+
+        {items.map(({ url, name }: any) => (
+          <Link
+            key={url || ''}
+            href={url || ''}
+            className={usePathname() === url ? "font-medium" : ''}
+          >
+            {name}
           </Link>
         ))}
       </div>

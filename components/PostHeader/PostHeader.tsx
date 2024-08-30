@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { numberToPolishNumeral } from '@utils/strings/numerals';
+import { numberToPolishNumeral } from '@/utils/strings/numerals';
 
-import { Stars } from '@components/Stars/Stars';
-import { PublicationDetails } from '@components/PublicationDetails/PublicationDetails';
+import { Stars, PublicationDetails } from '@/components';
 
 import styles from './PostHeader.module.css';
 
@@ -43,7 +42,7 @@ export const PostHeader = ({
     });
 
     return (
-        <div className="font-jost">
+        <div className="font-jost component-border-bottom">
             <div className="relative">
                 <picture>
                     {coverPicture?.['785x420'] && <source media="(min-width: 1468px)" srcSet={coverPicture?.['785x420']} />}
@@ -61,27 +60,15 @@ export const PostHeader = ({
                         createdAt={createdAt}
                     />
 
-                    <div className="component-padding relative !py-0">
+                    <div className="p-[30px] relative !py-0">
                         <h1 className="flex">
                             <span className="text-[38px]">{name}</span>
                         </h1>
                     </div>
                 </div>
             </div>
-            <div className="component-padding relative !pt-[10px] bg-white">
-                <div className="flex items-center">
-                    <Stars
-                        width={160}
-                        height={30}
-                        rating={rating}
-                        gapWidth={5}
-                    />
-
-                    <div className={styles.divSeparator}></div>
-
-                    <div>{numberOfComments || 0} {commentsText}</div>
-                </div>
-                {teaser?.length > 0 && <div className="mt-[10px] text-[20px] leading-[35px]">{teaser}</div>}
+            <div className="p-[30px] relative !pt-[10px] bg-white">
+                {<div className="mt-[10px] text-[20px] leading-[35px]">{teaser}</div>}
             </div>
         </div>
     );

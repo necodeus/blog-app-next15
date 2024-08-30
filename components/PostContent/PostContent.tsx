@@ -1,10 +1,10 @@
 import MarkdownIt from 'markdown-it'
 
-import highlightLines from '@plugins/markdown-it/highlight-lines'
-import codetabs from '@plugins/markdown-it/codetabs'
-import taskLists from '@plugins/markdown-it/task-lists'
-import anchor from '@plugins/markdown-it/anchor'
-import emoji from '@plugins/markdown-it/emoji'
+import highlightLines from '@/plugins/markdown-it/highlight-lines'
+import codetabs from '@/plugins/markdown-it/codetabs'
+import taskLists from '@/plugins/markdown-it/task-lists'
+import anchor from '@/plugins/markdown-it/anchor'
+import emoji from '@/plugins/markdown-it/emoji'
 
 import hljs from 'highlight.js'
 

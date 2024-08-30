@@ -1,11 +1,10 @@
+import clsx from 'clsx';
 import styles from './AsideContainer.module.css';
 
-export const AsideContainer = ({ children, extraClasses }: any) => {
-    const classes = [styles.asideContainer, extraClasses].join(' ');
+export const AsideContainer = ({ children, className }: any) => {
+	const classes = clsx(styles.container, className);
 
-    return (
-        <aside className={classes}>
-            { children }
-        </aside>
-    );
+	return (
+		<div className={classes}>{children}</div>
+	);
 };

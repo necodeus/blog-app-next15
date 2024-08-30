@@ -1,42 +1,47 @@
 'use client';
 
-import { AsideContainer } from "@components/AsideContainer/AsideContainer";
-import { BasicSection } from "@components/BasicSection/BasicSection";
-import Scrollbar from "@components/Scrollbar/Scrollbar";
-import { MainContainer } from "@components/MainContainer/MainContainer";
-import { SectionWrapper } from "@components/SectionWrapper/SectionWrapper";
-import { AsidePopularPosts } from "@components/AsidePopularPosts/AsidePopularPosts";
+import {
+  AsideContainer,
+  Scrollbar,
+  ContentContainer,
+  ErrorHeader,
+  AsidePopularPosts,
+  TopNavbar,
+  MainContainer,
+  SectionTitle,
+} from "@/components";
 
-import { ErrorHeader } from "@components/ErrorHeader/ErrorHeader";
+type Props = {
+  navigation: {
+    url: string;
+    name: string;
+  }[];
+  otherPosts: any[];
+};
 
-import { AsideLinks } from "@components/AsideLinks/AsideLinks";
-import { EXTERNAL_LINKS } from "@components/AsideLinks/consts";
-
-export default function Error404NotFound(props: any) {
+export default function Error404NotFound({ navigation, otherPosts }: Props) {
   return (
     <>
-      <MainContainer>
-        <Scrollbar>
-          <SectionWrapper width="var(--desktop-main-content-width)">
-            <BasicSection
-              width="var(--main-width)"
-              extraClasses="component-border-vertical lg:h-[100vh]"
-            >
-              <ErrorHeader code={404} message="Strona nie została znaleziona!" />
-            </BasicSection>
-          </SectionWrapper>
-        </Scrollbar>
-      </MainContainer>
+      <TopNavbar items={navigation} />
 
-      <AsideContainer extraClasses="component-border-vertical">
-        <Scrollbar>
-          <BasicSection extraClasses="component-border-bottom">
-            <AsidePopularPosts posts={[]} />
-          </BasicSection>
-          <BasicSection extraClasses="component-border-bottom">
-          </BasicSection>
-        </Scrollbar>
-      </AsideContainer>
+      <MainContainer>
+        <AsideContainer className="aside-left"></AsideContainer>
+
+        <ContentContainer className="main">
+          <Scrollbar>
+            <ErrorHeader code={404} message="Strona nie została znaleziona!" />
+          </Scrollbar>
+        </ContentContainer>
+
+        <AsideContainer className="aside-right">
+          <Scrollbar>
+              {otherPosts?.length > 0 && <>
+                <SectionTitle text="Wpisy" className="p-[30px] component-border-bottom" />
+                <AsidePopularPosts posts={otherPosts} />
+              </>}
+          </Scrollbar>
+        </AsideContainer>
+      </MainContainer>
     </>
   );
 }

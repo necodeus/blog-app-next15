@@ -1,21 +1,22 @@
+import clsx from "clsx";
+
 type Props = {
-    children: React.ReactNode;
-    withMargin?: boolean;
-    containerClass?: string;
+    className?: string;
+    text: string;
 };
 
-export const SectionTitle = ({ children, withMargin, containerClass = '' }: Props) => {
-    if (withMargin) {
-        return (
-            <div className={"mx-[30px] mb-[30px] font-jost text-[22px] " + containerClass}>
-                { children }
-            </div>
-        );
-    }
+const setFirstWordBold = (text: string) => {
+    const words = text.split(' ');
+    words[0] = `<span class="font-bold">${words[0]}</span>`;
+
+    return words.join(' ');
+}
+
+export const SectionTitle = ({ className, text = '' }: Props) => {
+    const classes = clsx("font-jost text-[22px] component-border-bottom", className);
 
     return (
-        <div className={"font-jost text-[22px] " + containerClass}>
-            { children }
-        </div>
+        <div className={classes} dangerouslySetInnerHTML={{ __html: setFirstWordBold(text) }} />
     );
 };
+

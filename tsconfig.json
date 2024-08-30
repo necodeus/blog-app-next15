@@ -22,24 +22,9 @@
       }
     ],
     "paths": {
-      "@app/*": [
-        "./app/*"
+      "@/*": [
+        "./*"
       ],
-      "@views/*": [
-        "./views/*"
-      ],
-      "@components/*": [
-        "./components/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ],
-      "@plugins/*": [
-        "./plugins/*"
-      ],
-      "@hooks/*": [
-        "./hooks/*"
-      ]
     },
     "target": "ES2017"
   },

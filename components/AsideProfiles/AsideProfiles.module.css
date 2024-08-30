@@ -25,7 +25,6 @@
 .wrapper > a {
     display: flex;
     align-items: center;
-    margin-left: -10px;
 }
 
 .wrapper > a:not(:last-child) {
@@ -33,7 +32,6 @@
 }
 
 .wrapper > a > div {
-    margin-left: 10px;
     word-wrap: anywhere;
 }
 

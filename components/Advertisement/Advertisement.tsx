@@ -8,7 +8,7 @@ type AdBannerTypes = {
   dataFullWidthResponsive: boolean;
 };
 
-const Advertisement = ({
+export const Advertisement = ({
   dataAdSlot,
   dataAdFormat,
   dataFullWidthResponsive,
@@ -35,5 +35,3 @@ const Advertisement = ({
     ></ins>
   );
 };
-
-export default Advertisement;

@@ -1,0 +1,52 @@
+.custom-scrollbar {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+
+    @media (max-width: calc(900px - 1px)) {
+        height: auto;
+    }
+}
+
+.custom-scrollbar-content {
+    height: 100%;
+
+    @media (max-width: calc(900px - 1px)) {
+        height: auto;
+    }
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.custom-scrollbar-content::-webkit-scrollbar {
+    display: none;
+}
+
+.custom-scrollbar-track {
+    position: absolute;
+    width: 4px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-left: 1px solid #d1d1d1;
+}
+
+.custom-scrollbar-thumb {
+    position: absolute;
+    width: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #d1d1d1;
+    cursor: pointer;
+}
+
+.custom-scrollbar-thumb:hover {
+    background: black;
+}

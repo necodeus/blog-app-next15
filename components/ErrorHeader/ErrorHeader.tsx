@@ -1,9 +1,9 @@
-type HeaderProps = {
+type Props = {
     code: number;
     message: string;
 };
 
-export const ErrorHeader = ({ code, message }: HeaderProps) => {
+export const ErrorHeader = ({ code, message }: Props) => {
     return (
         <>
             <div className="relative font-jost component-border-bottom">
