@@ -8,6 +8,7 @@ import {
   SectionTitle,
   AsideProfiles,
   MainContainer,
+  AuthorDetails,
   AuthorPosts,
   AsideSpotify,
 } from "@/components";
@@ -36,28 +37,20 @@ export default function Author({
 
       <MainContainer>
         <AsideContainer className="aside-left">
-          <Scrollbar></Scrollbar>
+          <Scrollbar />
         </AsideContainer>
 
         <ContentContainer className="main">
           <Scrollbar>
-            <div className="font-jost component-border-bottom">
-              <div className="p-[30px] relative bg-white">
-                <div className="font-jost flex items-center text-[20px] rounded-[7px]">
-                  <picture>
-                    <img className="mobile-photo min-w-[55px] max-w-[55px] min-h-[55px] max-h-[55px] bg-cover bg-center !rounded-[50%] bg-[#eee]" src={`https://images.necodeo.com/${author.avatar_image_id}/55x55`} alt="" loading="lazy" />
-                  </picture>
-                  <div className="ml-[20px]">
-                    <div className="flex items-center">
-                      <div className="font-medium">{author.name}</div>
-                    </div>
-                    <div className="mt-[2px] text-[16px]">{author.bio}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <SectionTitle text="Autor necodeus" className="p-[30px]" />
+            <AuthorDetails
+              className="p-[30px] component-border-bottom"
+              name={author.name}
+              bio={author.bio}
+              avatar_image_id={author.avatar_image_id}
+            />
 
-            <SectionTitle text="Artykuły autora" className="p-[30px]" />
+            <SectionTitle text="Artykuły" className="p-[30px]" />
             <AuthorPosts posts={posts} />
           </Scrollbar>
         </ContentContainer>

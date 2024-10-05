@@ -53,7 +53,7 @@ export default function Post({ navigation, post, postAuthor, otherPosts }: Props
 
         <MainContainer>
           <AsideContainer className="aside-left">
-            <Scrollbar></Scrollbar>
+            <Scrollbar />
           </AsideContainer>
 
           <ContentContainer className="main">

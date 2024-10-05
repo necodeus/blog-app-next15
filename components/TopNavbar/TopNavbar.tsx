@@ -24,8 +24,8 @@ export const TopNavbar = ({ items = [] }: any) => {
 
         {items.map(({ url, name }: any) => (
           <Link
-            key={url || ''}
-            href={url || ''}
+            key={url || null}
+            href={url || null}
             className={usePathname() === url ? "font-medium" : ''}
           >
             {name}

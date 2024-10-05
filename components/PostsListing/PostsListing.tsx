@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import moment from "moment"
-import 'moment/locale/pl';
+moment.locale("pl")
 
 import styles from './PostsListing.module.css';
 import Link from "next/link";

@@ -20,3 +20,4 @@ export { SectionWrapper } from './SectionWrapper/SectionWrapper';
 export { Stars } from './Stars/Stars';
 export { TopNavbar } from './TopNavbar/TopNavbar';
 export { AuthorPosts } from './AuthorPosts/AuthorPosts';
+export { AuthorDetails } from './AuthorDetails/AuthorDetails';

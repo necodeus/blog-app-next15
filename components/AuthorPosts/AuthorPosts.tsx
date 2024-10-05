@@ -21,7 +21,7 @@ export const AuthorPosts = ({ posts }: Props) => {
     return (
         <div className="grid p-[30px] gap-[30px] component-border-bottom">
             {posts.map((post) => (
-                <Link className="flex flex-col sm:flex-row items-center gap-[30px]" href={post.path || ''} key={post.id}>
+                <Link className="flex flex-col sm:flex-row items-center gap-[30px]" href={post.path || null} key={post.id}>
                     <img
                         // 3 lines only!
                         className="sm:min-w-[150px] sm:max-w-[150px] sm:min-h-[95px] sm:max-h-[95px] block object-cover rounded-[3px] overflow-hidden opacity-[0.6]"

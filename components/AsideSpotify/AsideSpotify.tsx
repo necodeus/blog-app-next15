@@ -1,4 +1,4 @@
-import moment from "moment/min/moment-with-locales"
+import moment from "moment"
 moment.locale("pl")
 
 type Props = {
@@ -72,6 +72,6 @@ export const AsideSpotify = ({ songs }: Props) => {
 		}
 
 		return null;
-	});
+	})
 
 };

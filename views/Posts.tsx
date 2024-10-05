@@ -33,7 +33,7 @@ export default function Posts({ navigation, posts }: Props) {
 
       <MainContainer>
         <AsideContainer className="aside-left">
-          <Scrollbar></Scrollbar>
+          <Scrollbar />
         </AsideContainer>
 
         <ContentContainer className="main">
@@ -44,7 +44,7 @@ export default function Posts({ navigation, posts }: Props) {
         </ContentContainer>
 
         <AsideContainer className="aside-right">
-          <Scrollbar></Scrollbar>
+          <Scrollbar />
         </AsideContainer>
       </MainContainer>
     </>

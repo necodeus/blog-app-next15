@@ -9,7 +9,7 @@ export const numberToPolishNumeral = (
         one,
         many,
         exceptions,
-    }: any,
+    }: { one: string; many: string; exceptions: string },
 ) => {
     comments = Math.abs(comments);
 
@@ -33,11 +33,12 @@ export const numberToPolishNumeral = (
  * Pytanie: który z kolei? drugi, trzecia, siódmy, piętnaste
  */
 export const numberToPolishOrdinalNumeral = (
-    comments: number, {
+    comments: number,
+    {
         one,
         many,
         exceptions,
-    }: any,
+    }: { one: string; many: string; exceptions: string },
 ) => {
     comments = Math.abs(comments);
 

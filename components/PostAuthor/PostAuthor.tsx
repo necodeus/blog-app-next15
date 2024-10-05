@@ -18,7 +18,7 @@ export const PostAuthor = ({ profile }: Props) => {
     return <div className="font-jost flex items-center text-[20px] p-[30px]">
         <picture>
             <img
-                className="mobile-photo min-w-[55px] max-w-[55px] min-h-[55px] max-h-[55px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
+                className="min-w-[55px] max-w-[55px] min-h-[55px] max-h-[55px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
                 src={profile.author_picture?.['55x55']}
                 alt=""
                 loading="lazy"

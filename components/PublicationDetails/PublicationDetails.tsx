@@ -1,5 +1,7 @@
 import Link from "next/link";
-import moment from "moment";
+
+import moment from "moment"
+moment.locale("pl")
 
 import styles from './PublicationDetails.module.css';
 
