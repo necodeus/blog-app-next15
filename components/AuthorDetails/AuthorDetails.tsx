@@ -24,7 +24,7 @@ export const AuthorDetails = ({
     return (
         <div className={className}>
             <LinkOrDiv
-                href={path || null}
+                href={path || ''}
                 className="inline-flex items-center gap-[20px]"
             >
                 <picture>

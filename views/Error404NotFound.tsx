@@ -1,15 +1,13 @@
-'use client';
+"use client";
 
 import {
-  AsideContainer,
   Scrollbar,
   ContentContainer,
   ErrorHeader,
-  AsidePopularPosts,
   TopNavbar,
   MainContainer,
-  SectionTitle,
 } from "@/components";
+import { ContentLayout } from "@/components/ContentLayout/ContentLayout";
 
 type Props = {
   navigation: {
@@ -21,27 +19,8 @@ type Props = {
 
 export default function Error404NotFound({ navigation, otherPosts }: Props) {
   return (
-    <>
-      <TopNavbar items={navigation} />
-
-      <MainContainer>
-        <AsideContainer className="aside-left"></AsideContainer>
-
-        <ContentContainer className="main">
-          <Scrollbar>
-            <ErrorHeader code={404} message="Strona nie została znaleziona!" />
-          </Scrollbar>
-        </ContentContainer>
-
-        <AsideContainer className="aside-right">
-          <Scrollbar>
-              {otherPosts?.length > 0 && <>
-                <SectionTitle text="Wpisy" className="p-[30px] component-border-bottom" />
-                <AsidePopularPosts posts={otherPosts} />
-              </>}
-          </Scrollbar>
-        </AsideContainer>
-      </MainContainer>
-    </>
+    <ContentLayout header={<TopNavbar items={navigation} />}>
+      <ErrorHeader code={404} message="Strona nie została znaleziona!" />
+    </ContentLayout>
   );
 }

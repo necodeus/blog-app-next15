@@ -1,17 +1,12 @@
-import Link from "next/link";
-
 import {
   TopNavbar,
-  Scrollbar,
-  AsideContainer,
-  ContentContainer,
   SectionTitle,
-  AsideProfiles,
-  MainContainer,
   AuthorDetails,
   AuthorPosts,
   AsideSpotify,
+  AsideLinks,
 } from "@/components";
+import { ContentLayout } from "@/components/ContentLayout/ContentLayout";
 
 type Props = {
   navigation: {
@@ -20,7 +15,7 @@ type Props = {
   }[];
   author: any;
   posts: any[];
-  profiles: any[];
+  links: any[];
   songs: any[];
 };
 
@@ -28,47 +23,42 @@ export default function Author({
   navigation,
   author,
   posts,
-  profiles,
+  links = [
+    // TODO: move data to blog-api
+    {
+      href: "https://necodeus.com/",
+      text: "Wizytówka",
+      description: "dawid.smulewicz.pro",
+    },
+  ],
   songs,
 }: Props) {
   return (
-    <>
-      <TopNavbar items={navigation} />
+    <ContentLayout
+      header={<TopNavbar items={navigation} />}
+      rightSidebar={
+        <>
+          <SectionTitle text="Linki zewnętrzne" className="p-[30px]" />
+          <AsideLinks links={links} />
 
-      <MainContainer>
-        <AsideContainer className="aside-left">
-          <Scrollbar />
-        </AsideContainer>
+          <SectionTitle text="Spotify na żywo" className="p-[30px]" />
+          <div className="p-[30px] component-border-bottom">
+            <AsideSpotify songs={songs} />
+          </div>
+        </>
+      }
+    >
+      <SectionTitle text="Autor necodeus" className="p-[30px]" />
+      <AuthorDetails
+        className="p-[30px] component-border-bottom"
+        name={author.name}
+        bio={author.bio}
+        numberOfPosts={posts.length}
+        avatar_image_id={author.avatar_image_id}
+      />
 
-        <ContentContainer className="main">
-          <Scrollbar>
-            <SectionTitle text="Autor necodeus" className="p-[30px]" />
-            <AuthorDetails
-              className="p-[30px] component-border-bottom"
-              name={author.name}
-              bio={author.bio}
-              avatar_image_id={author.avatar_image_id}
-            />
-
-            <SectionTitle text="Artykuły" className="p-[30px]" />
-            <AuthorPosts posts={posts} />
-          </Scrollbar>
-        </ContentContainer>
-
-        <AsideContainer className="aside-right">
-          <Scrollbar>
-            {profiles?.length > 0 && <>
-              <SectionTitle text="Profile społecznościowe" className="p-[30px] component-border-bottom" />
-              <AsideProfiles profiles={profiles} />
-            </>}
-            
-            {songs?.length > 0 && <>
-              <SectionTitle text="Spotify na żywo" className="p-[30px] component-border-bottom" />
-              <AsideSpotify songs={songs} />
-            </>}
-          </Scrollbar>
-        </AsideContainer>
-      </MainContainer>
-    </>
+      <SectionTitle text="Artykuły" className="p-[30px]" />
+      <AuthorPosts posts={posts} />
+    </ContentLayout>
   );
 }

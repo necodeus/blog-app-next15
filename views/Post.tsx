@@ -1,18 +1,11 @@
-import Script from "next/script";
-
 import {
   TopNavbar,
   PostNavigation,
-  AsidePopularPosts,
-  AsideContainer,
-  ContentContainer,
-  Scrollbar,
   PostHeader,
   PostContent,
-  MainContainer,
-  SectionTitle,
 } from "@/components";
 import { slugify } from "@/plugins/markdown-it/anchor";
+import { ContentLayout } from "@/components/ContentLayout/ContentLayout";
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
   const headers = markdownText.match(/^#{1,6} .+$/gm) ?? [];
@@ -37,59 +30,37 @@ type Props = {
   otherPosts: any[];
 };
 
-export default function Post({ navigation, post, postAuthor, otherPosts }: Props) {
+export default function Post({
+  navigation,
+  post,
+  postAuthor,
+  otherPosts,
+}: Props) {
   const contentItems = extractMarkdownHeadersWithIds(post?.content ?? "");
 
   return (
-    <>
-      <Script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-7601886123256141`}
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
-      <>
-        <TopNavbar items={navigation} />
+    <ContentLayout header={<TopNavbar items={navigation} />}>
+      <div>
+        {post?.id && (
+          <PostHeader
+            coverPicture={post.cover_picture}
+            postAuthor={postAuthor}
+            createdAt={post.created_at}
+            name={post.title}
+            rating={4.5}
+            numberOfComments={post.comments_count}
+            teaser={post.teaser}
+          />
+        )}
+      </div>
 
-        <MainContainer>
-          <AsideContainer className="aside-left">
-            <Scrollbar />
-          </AsideContainer>
+      {contentItems.length > 0 && <PostNavigation items={contentItems} />}
 
-          <ContentContainer className="main">
-            <Scrollbar>
-              <div>
-                {post?.id && (
-                  <PostHeader
-                    coverPicture={post.cover_picture}
-                    postAuthor={postAuthor}
-                    createdAt={post.created_at}
-                    name={post.title}
-                    rating={post.rating}
-                    numberOfComments={post.comments_count}
-                    teaser={post.teaser}
-                  />
-                )}
-              </div>
-
-              {contentItems.length > 0 && (
-                <PostNavigation items={contentItems} />
-              )}
-
-              {post?.content?.length > 0 && <PostContent content={post?.content ?? ""} />}
-            </Scrollbar>
-          </ContentContainer>
-
-          <AsideContainer className="aside-right">
-            <Scrollbar>
-              {otherPosts?.length > 0 && <>
-                <SectionTitle text="Inne wpisy" className="p-[30px] component-border-bottom" />
-                <AsidePopularPosts posts={otherPosts} />
-              </>}
-            </Scrollbar>
-          </AsideContainer>
-        </MainContainer>
-      </>
-    </>
+      {post?.content?.length > 0 && (
+        <div className="border-b-[1px] border-[#e5e5e5]">
+          <PostContent content={post?.content ?? ""} />
+        </div>
+      )}
+    </ContentLayout>
   );
 }

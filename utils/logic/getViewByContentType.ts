@@ -8,14 +8,12 @@ const Posts = dynamic(() => import('@/views/Posts'));
 const Post = dynamic(() => import('@/views/Post'));
 const Authors = dynamic(() => import('@/views/Authors'));
 const Author = dynamic(() => import('@/views/Author'));
-const Contact = dynamic(() => import('@/views/Contact'));
 
 const components = {
     POSTS: Posts,
     POST: Post,
     AUTHORS: Authors,
     AUTHOR: Author,
-    CONTACT: Contact,
     REDIRECTION: Redirection,
 } as {
     [key: string]: React.ComponentType<any>;

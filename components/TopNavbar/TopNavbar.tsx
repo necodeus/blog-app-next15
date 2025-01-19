@@ -4,6 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Logo } from '@/components';
+import { FrameworkLogo } from "../FrameworkLogo/FrameworkLogo";
+
+import styles from "./TopNavbar.module.css";
 
 export const TopNavbar = ({ items = [] }: any) => {
   if (!items.length) {
@@ -20,7 +23,11 @@ export const TopNavbar = ({ items = [] }: any) => {
           margin: "0 30px",
         }}
       >
-        <Logo className="mr-[20px]" height={25} />
+        <div className="flex items-center gap-[15px]">
+          <Logo height={25} />
+          <div className={styles.divSeparator}></div>
+          <FrameworkLogo width={75} />
+        </div>
 
         {items.map(({ url, name }: any) => (
           <Link

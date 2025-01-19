@@ -19,22 +19,9 @@
     max-width: var(--max-main-width);
 }
 
-.aside-left {
-    min-width: 350px;
-    max-width: 350px;
-}
-
-.aside-right {
-    min-width: 350px;
-    max-width: 350px;
-}
-
 @media (max-width: calc(1500px - 1px)) {
     .main {
         min-width: calc(100% - 350px);
-    }
-    .aside-left {
-        display: none;
     }
 }
 
@@ -43,6 +30,6 @@
         min-width: 100%;
     }
     .aside-right {
-        display: none;
+        /* display: none; */
     }
 }

@@ -1,7 +1,7 @@
 export { Advertisement } from './Advertisement/Advertisement';
-export { AsideContainer } from './AsideContainer/AsideContainer';
 export { AsidePopularPosts } from './AsidePopularPosts/AsidePopularPosts';
 export { AsideProfiles } from './AsideProfiles/AsideProfiles';
+export { AsideLinks } from './AsideLinks/AsideLinks';
 export { AsideSpotify } from './AsideSpotify/AsideSpotify';
 export { BasicSection } from './BasicSection/BasicSection';
 export { ContentContainer } from './ContentContainer/ContentContainer';

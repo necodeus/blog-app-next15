@@ -35,7 +35,7 @@ export const PostHeader = ({
     numberOfComments,
     teaser,
 }: Props) => {
-    const commentsText = numberToPolishNumeral(numberOfComments, {
+    const commentsText = numberToPolishNumeral(numberOfComments || 0, {
         one: 'komentarz',
         many: 'komentarzy',
         exceptions: 'komentarze',
@@ -48,7 +48,7 @@ export const PostHeader = ({
                     {coverPicture?.['785x420'] && <source media="(min-width: 1468px)" srcSet={coverPicture?.['785x420']} />}
                     {coverPicture?.['1200x430'] && <source media="(min-width: 800px)" srcSet={coverPicture?.['1200x430']} />}
                     {coverPicture?.['785x420'] && <source media="(min-width: 0px)" srcSet={coverPicture?.['785x420']} />}
-                    <img className={styles.background} src={coverPicture?.['1200x4320']} loading="lazy" alt="" />
+                    <img className={styles.background} src={coverPicture?.['1200x430']} loading="lazy" alt="" />
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                     <PublicationDetails
@@ -68,6 +68,16 @@ export const PostHeader = ({
                 </div>
             </div>
             <div className="p-[30px] relative !pt-[10px] bg-white">
+                <div className="flex items-center">
+                    <Stars
+                        width={160}
+                        height={30}
+                        rating={rating}
+                        gapWidth={5}
+                    />
+                    <div className={styles.divSeparator}></div>
+                    <div>{numberOfComments || 0} {commentsText}</div>
+                </div>
                 {<div className="mt-[10px] text-[20px] leading-[35px]">{teaser}</div>}
             </div>
         </div>

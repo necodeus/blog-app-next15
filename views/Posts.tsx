@@ -1,12 +1,9 @@
 import {
   TopNavbar,
-  MainContainer,
-  AsideContainer,
-  Scrollbar,
-  ContentContainer,
   SectionTitle,
   PostsListing,
 } from "@/components";
+import { ContentLayout } from "@/components/ContentLayout/ContentLayout";
 
 type Props = {
   navigation: {
@@ -28,25 +25,9 @@ type Props = {
 
 export default function Posts({ navigation, posts }: Props) {
   return (
-    <>
-      <TopNavbar items={navigation} />
-
-      <MainContainer>
-        <AsideContainer className="aside-left">
-          <Scrollbar />
-        </AsideContainer>
-
-        <ContentContainer className="main">
-          <Scrollbar>
-            <SectionTitle text="Artykuły" className="p-[30px]" />
-            <PostsListing posts={posts} />
-          </Scrollbar>
-        </ContentContainer>
-
-        <AsideContainer className="aside-right">
-          <Scrollbar />
-        </AsideContainer>
-      </MainContainer>
-    </>
+    <ContentLayout header={<TopNavbar items={navigation} />}>
+      <SectionTitle text="Artykuły" className="p-[30px]" />
+      <PostsListing posts={posts} />
+    </ContentLayout>
   );
 }
