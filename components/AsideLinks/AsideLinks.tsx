@@ -10,7 +10,7 @@ export const AsideLinks = ({ links = [] }: Props) => {
   return (
     <ul className="font-jost flex flex-col gap-[30px] p-[30px] component-border-bottom">
       {links.map((link: any) => (
-        <li>
+        <li key={link.href}>
           <a
             className="text-[20px] inline-block"
             target="_blank"

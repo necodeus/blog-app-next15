@@ -9,6 +9,8 @@ import { FrameworkLogo } from "../FrameworkLogo/FrameworkLogo";
 import styles from "./TopNavbar.module.css";
 
 export const TopNavbar = ({ items = [] }: any) => {
+  const pathname = usePathname();
+
   if (!items.length) {
     return null;
   }
@@ -33,7 +35,7 @@ export const TopNavbar = ({ items = [] }: any) => {
           <Link
             key={url || null}
             href={url || null}
-            className={usePathname() === url ? "font-medium" : ''}
+            className={pathname === url ? "font-medium" : ''}
           >
             {name}
           </Link>

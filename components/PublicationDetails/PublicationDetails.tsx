@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import moment from "moment/min/moment-with-locales";
+import moment from 'moment/min/moment-with-locales';
 moment.locale("pl");
 
 import styles from './PublicationDetails.module.css';
