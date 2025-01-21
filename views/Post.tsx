@@ -1,6 +1,6 @@
 import {
   TopNavbar,
-  PostNavigation,
+  ContentNav,
   PostHeader,
   PostContent,
 } from "@/components";
@@ -54,7 +54,7 @@ export default function Post({
         )}
       </div>
 
-      {contentItems.length > 0 && <PostNavigation items={contentItems} />}
+      {contentItems.length > 0 && <ContentNav items={contentItems} />}
 
       {post?.content?.length > 0 && (
         <div className="border-b-[1px] border-[#e5e5e5]">

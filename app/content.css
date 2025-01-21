@@ -1,15 +1,14 @@
 .content {
-    font-size: 20px;
-    font-family: Jost, sans-serif;
-    position: relative;
-    border-bottom: 1px solid transparent;
+  font-size: 20px;
+  font-family: Jost, sans-serif;
+  position: relative;
+  border-bottom: 1px solid transparent;
 }
 
 .content img.emoji {
-    height: 20px;
-    display: inline;
+  height: 20px;
+  display: inline;
 }
-
 .content table,
 .content :not(.code-tabs) ul,
 .content .contains-task-list,
@@ -25,262 +24,228 @@
 .content nav,
 .content section,
 .content blockquote {
-    margin: 30px;
+  margin: 30px;
 }
-
-.content>ul {
-    margin: 30px;
+.content > ul {
+  margin: 30px;
 }
-
 .content h2 {
-    font-weight: 400;
-    font-size: 34px;
+  font-weight: 400;
+  font-size: 38px;
 }
-
-.content h3 {
-    font-weight: 400;
-    font-size: 30px;
+.content h2::before {
+  content: "# ";
+  position: absolute;
+  transform: scale(2);
+  left: 0px;
+  font-weight: 400;
+  z-index: -1;
+  color: #c4c4c4 1a;
+  color: #ececec;
 }
-
-.content h4 {
-    font-weight: 400;
-    font-size: 26px;
-}
-
 .content .markdown-alert {
-    padding: 1em;
-    border-left: 0.25rem solid;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    border-color: var(--border-color);
+  padding: 1em;
+  border-left: 0.25rem solid;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-color: var(--border-color);
 }
-
-.content .markdown-alert>span {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: var(--border-color);
+.content .markdown-alert > span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--border-color);
 }
-
 .content .markdown-alert .markdown-alert-icon {
-    margin-right: 0.5em;
-    fill: var(--border-color);
+  margin-right: 0.5em;
+  fill: var(--border-color);
 }
-
 .content .markdown-alert.note {
-    --border-color: #539BF5;
+  --border-color: #539bf5;
 }
-
 .content .markdown-alert.warning {
-    --border-color: #C69026;
+  --border-color: #c69026;
 }
-
 .content .markdown-alert.important {
-    --border-color: #986EE2;
+  --border-color: #986ee2;
 }
-
 .content .markdown-alert.caution {
-    --border-color: #E5534B;
+  --border-color: #e5534b;
 }
-
 .content .markdown-alert.tip {
-    --border-color: #57AB5A;
+  --border-color: #57ab5a;
 }
-
 .content p {
-    line-height: 35px;
+  line-height: 35px;
 }
-
-.content p+p {
-    margin-top: 0;
+.content p + p {
+  margin-top: 0;
 }
-
 .content a {
-    color: #7400ff;
+  color: #7400ff;
 }
-
 .content ul:not(.contains-task-list) li::before {
-    content: '— ';
+  content: "— ";
 }
-
-.content ul li strong {
-    font-weight: 500;
-}
-
 .content .code-tabs pre,
 .content .code-tabs input {
-    display: none;
+  display: none;
 }
-
-.content .code-tabs input:checked+pre {
-    display: block;
+.content .code-tabs input:checked + pre {
+  display: block;
 }
-
 .content .code-tabs label {
-    color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
-
-.content .code-tabs input:checked+label {
-    color: black;
-    font-weight: 500;
+.content .code-tabs input:checked + label {
+  color: black;
+  font-weight: 500;
 }
-
 .content .code-tabs ul {
-    font-size: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow: auto;
-    user-select: none;
-    margin: 0 30px;
+  font-size: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: auto;
+  user-select: none;
+  margin: 0 30px;
 }
-
 .content .code-tabs li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
-
 .content .code-tabs label {
-    cursor: pointer;
-    user-select: none;
-    display: inline-block;
-    padding: 2px 5px;
-    margin: 5px;
-    font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  padding: 2px 5px;
+  margin: 5px;
+  font-size: 14px;
 }
-
-.content .code-tabs li~li::before {
-    content: "";
-    height: 12px;
-    width: 1px;
-    background: rgba(191, 191, 191, 1);
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.content .code-tabs li ~ li::before {
+  content: "";
+  height: 12px;
+  width: 1px;
+  background: rgba(191, 191, 191, 1);
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-
 .content pre.hljs {
-    margin: 7px;
-    border-radius: 7px;
-    position: relative;
-    overflow: hidden;
+  margin: 7px;
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
 }
-
 .content pre.hljs.icon-py::before {
-    content: '';
-    background: url(/uploads/python.png);
-    position: absolute;
-    top: 42px;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-size: auto 120px;
-    background-repeat: no-repeat;
-    background-position-y: top;
-    background-position-x: calc(100% + 20px);
-    opacity: 0.15;
+  content: "";
+  background: url(/uploads/python.png);
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: auto 120px;
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: calc(100% + 20px);
+  opacity: 0.15;
 }
-
 .content pre.hljs.icon-go::before {
-    content: '';
-    background: url(/uploads/go.png);
-    position: absolute;
-    top: 42px;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-size: auto 120px;
-    background-repeat: no-repeat;
-    background-position-y: top;
-    background-position-x: calc(100% + 20px);
-    opacity: 0.15;
+  content: "";
+  background: url(/uploads/go.png);
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: auto 120px;
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: calc(100% + 20px);
+  opacity: 0.15;
 }
-
 .content pre.hljs.icon-c::before {
-    content: '';
-    background: url(/uploads/c.png);
-    position: absolute;
-    top: 42px;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-size: auto 120px;
-    background-repeat: no-repeat;
-    background-position-y: top;
-    background-position-x: calc(100% + 20px);
-    opacity: 0.15;
+  content: "";
+  background: url(/uploads/c.png);
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: auto 120px;
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: calc(100% + 20px);
+  opacity: 0.15;
 }
-
 .content pre.hljs.icon-cpp::before {
-    content: '';
-    background: url(/uploads/cpp.png);
-    position: absolute;
-    top: 42px;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-size: auto 120px;
-    background-repeat: no-repeat;
-    background-position-y: top;
-    background-position-x: calc(100% + 20px);
-    opacity: 0.15;
+  content: "";
+  background: url(/uploads/cpp.png);
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: auto 120px;
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: calc(100% + 20px);
+  opacity: 0.15;
 }
-
 .content pre.hljs code {
-    display: block;
-    font-family: Consolas, Monaco, monospace;
-    font-size: 14px;
-    padding: 42px 21px;
-    overflow-x: auto;
-    z-index: 1;
-    position: relative;
+  display: block;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  padding: 42px 21px;
+  overflow-x: auto;
+  z-index: 1;
+  position: relative;
 }
-
 .content pre.hljs code .highlighted-line {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
-
 .content pre.hljs code .highlighted-line::before {
-    content: '';
-    background-color: rgba(200, 200, 200, 0.1);
-    position: absolute;
-    width: 100%;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
+  content: "";
+  background-color: rgba(200, 200, 200, 0.1);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
-.content pre.hljs code .highlighted-line>* {
-    position: relative;
-    z-index: 1;
+.content pre.hljs code .highlighted-line > * {
+  position: relative;
+  z-index: 1;
 }
 
 .content blockquote {
-    margin: 0;
-    background-color: #eee;
-    border-radius: 7px;
-    font-style: italic;
-    margin: 7px;
-    padding: 42px 21px;
-    position: relative;
+  margin: 0;
+  background-color: #eee;
+  border-radius: 7px;
+  font-style: italic;
+  margin: 7px;
+  padding: 42px 21px;
+  position: relative;
 }
 
 .content blockquote p {
-    margin: 0;
+  margin: 0;
 }
 
 .content blockquote p:last-child {
-    margin-top: 28px;
-    font-weight: 500;
-    font-size: 16px;
+  margin-top: 28px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .content blockquote p:last-child::before {
-    content: '— ';
+  content: "— ";
 }

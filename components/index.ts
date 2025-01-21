@@ -11,7 +11,7 @@ export { MainContainer } from './MainContainer/MainContainer';
 export { PostAuthor } from './PostAuthor/PostAuthor';
 export { PostContent } from './PostContent/PostContent';
 export { PostHeader } from './PostHeader/PostHeader';
-export { PostNavigation } from './PostNavigation/PostNavigation';
+export { ContentNav } from './ContentNav/ContentNav';
 export { PostsListing } from './PostsListing/PostsListing';
 export { PublicationDetails } from './PublicationDetails/PublicationDetails';
 export { Scrollbar } from './Scrollbar/Scrollbar';

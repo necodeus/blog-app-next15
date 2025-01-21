@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import styles from './PostNavigation.module.css';
+import styles from './ContentNav.module.css';
 import Link from 'next/link';
 
-export const PostNavigation = ({ items }: any) => {
+export const ContentNav = ({ items }: any) => {
     const classes = clsx(styles.contentNav, 'component-border-bottom');
 
     return (
