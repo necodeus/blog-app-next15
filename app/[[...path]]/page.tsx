@@ -13,7 +13,7 @@ type Props = {
   };
 }
 
-export default async function DynamicPage(props: Props): Promise<ReactElement> {
+export default async function DynamicPage(props: Props): Promise<ReactElement | any> {
   const path = '/' + (props.params.path?.join('/') || '');
   const initialPageData = await getInitialUrlData(path);
 
