@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { numberToPolishNumeral } from '@/utils/strings/numerals';
-
 import { Stars, PublicationDetails } from '@/components';
 
 import styles from './PostHeader.module.css';
@@ -35,11 +33,11 @@ export const PostHeader = ({
     numberOfComments,
     teaser,
 }: Props) => {
-    const commentsText = numberToPolishNumeral(numberOfComments || 0, {
-        one: 'komentarz',
-        many: 'komentarzy',
-        exceptions: 'komentarze',
-    });
+    const publisher = {
+        name: postAuthor.name,
+        path: postAuthor.path,
+        picture: postAuthor.author_picture,
+    }
 
     return (
         <div className="font-jost component-border-bottom">
@@ -52,11 +50,7 @@ export const PostHeader = ({
                 </picture>
                 <div className="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                     <PublicationDetails
-                        publisher={{
-                            name: postAuthor.name,
-                            path: postAuthor.path,
-                            picture: postAuthor.author_picture,
-                        }}
+                        publisher={publisher}
                         createdAt={createdAt}
                     />
 
@@ -76,7 +70,7 @@ export const PostHeader = ({
                         gapWidth={5}
                     />
                     <div className={styles.divSeparator}></div>
-                    <div>{numberOfComments || 0} {commentsText}</div>
+                    <div>{rating}</div>
                 </div>
                 {<div className="mt-[10px] text-[20px] leading-[35px]">{teaser}</div>}
             </div>

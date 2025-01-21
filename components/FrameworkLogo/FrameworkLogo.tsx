@@ -1,19 +1,15 @@
+import styles from "./FrameworkLogo.module.css";
+
 export const FrameworkLogo = ({ width }: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 394 79"
       width={width}
-      style={{
-        opacity: 0.5,
-      }}
-      onClick={() => {
-        fetch("/api/set-version", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+      className={styles.icon}
+      onClick={async () => {
+        await fetch("/api/set-version");
+        window.location.reload();
       }}
     >
       <path d="M261.919 0.0330722H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.0330722Z"></path>

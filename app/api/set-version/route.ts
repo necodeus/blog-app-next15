@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
 
-const current = "next";
-const versions = ["astro", "next", "nuxt"];
+const versions = ["astro", "nuxt"];
+
+const getCookieValue = (cookies: string, key: string) => {
+  return cookies?.split("; ").find((cookie) => cookie.startsWith(`${key}=`))?.split("=")[1];
+};
+
+const getNewVersion = (currentVersion: string) => {
+  const currentIndex = versions.indexOf(currentVersion);
+  const nextIndex = (currentIndex + 1) % versions.length;
+  return versions[nextIndex];
+};
 
 export async function GET(req: Request) {
-  const cookies = req.headers.get("cookie");
-  const currentVersion = cookies
-    ?.split("; ")
-    .find((cookie) => cookie.startsWith("version="))
-    ?.split("=")[1];
-  const filteredVersions = versions.filter((version) => version !== current);
-  const currentIndex = filteredVersions.indexOf(currentVersion || "");
-  const nextIndex = (currentIndex + 1) % filteredVersions.length;
-  const nextVersion = filteredVersions[nextIndex];
+  const nextVersion = getNewVersion(getCookieValue(req.headers.get("cookie") || '', "version") || '');
 
   const response = NextResponse.json({ version: nextVersion });
   response.cookies.set("version", nextVersion, {
