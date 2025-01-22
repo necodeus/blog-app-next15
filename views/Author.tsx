@@ -41,7 +41,7 @@ export default function Author({
         </>
       }
     >
-      <SectionTitle text="Autor necodeus" className="p-[30px]" />
+      <SectionTitle text={`Autor ${author.name}`} className="p-[30px]" />
       <AuthorDetails
         className="p-[30px] component-border-bottom"
         name={author.name}
