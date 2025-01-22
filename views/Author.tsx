@@ -31,8 +31,12 @@ export default function Author({
       header={<TopNavbar items={navigation} />}
       rightSidebar={
         <>
-          <SectionTitle text="Linki zewnętrzne" className="p-[30px]" />
-          <AsideLinks links={links} />
+          {links.length > 0 && (
+            <>
+              <SectionTitle text="Linki zewnętrzne" className="p-[30px]" />
+              <AsideLinks links={links} />
+            </>
+          )}
 
           <SectionTitle text="Spotify na żywo" className="p-[30px]" />
           <div className="p-[30px] component-border-bottom">

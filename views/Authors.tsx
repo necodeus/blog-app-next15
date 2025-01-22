@@ -21,6 +21,7 @@ export default function Authors({ navigation, authors }: Props) {
       <div className="flex flex-col gap-[30px] p-[30px] component-border-bottom">
         {authors.map((author: any) => (
           <AuthorDetails
+            key={author.id}
             name={author.name}
             bio={author.bio}
             avatar_image_id={author.avatar_image_id}
