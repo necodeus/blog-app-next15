@@ -23,14 +23,7 @@ export default function Author({
   navigation,
   author,
   posts,
-  links = [
-    // TODO: move data to blog-api
-    {
-      href: "https://necodeus.com/",
-      text: "Wizytówka",
-      description: "dawid.smulewicz.pro",
-    },
-  ],
+  links,
   songs,
 }: Props) {
   return (
