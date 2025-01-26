@@ -2,21 +2,13 @@ import moment from 'moment/min/moment-with-locales';
 moment.locale("pl");
 
 type Props = {
-  songs: {
-    type: string;
-    played_at: string;
-    name: string;
-    artists: string;
-    images: {
-      url: string;
-    }[];
-  }[];
+  spotifyActivity: any;
 };
 
-export const AsideSpotify = ({ songs }: Props) => {
+export const AsideSpotify = ({ spotifyActivity }: Props) => {
   return (
     <div className="flex flex-col gap-[30px]">
-      {songs.map((song, song_index: number) => {
+      {spotifyActivity.player.map((song: any, song_index: number) => {
         if (song.type === "history") {
           return (
             <div className="opacity-[0.5] flex items-center" key={song_index}>

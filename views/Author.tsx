@@ -16,7 +16,7 @@ type Props = {
   author: any;
   posts: any[];
   links: any[];
-  songs: any[];
+  spotifyActivity: any;
 };
 
 export default function Author({
@@ -24,7 +24,7 @@ export default function Author({
   author,
   posts,
   links,
-  songs,
+  spotifyActivity,
 }: Props) {
   return (
     <ContentLayout
@@ -38,10 +38,14 @@ export default function Author({
             </>
           )}
 
-          <SectionTitle text="Spotify na żywo" className="p-[30px]" />
-          <div className="p-[30px] component-border-bottom">
-            <AsideSpotify songs={songs} />
-          </div>
+          {spotifyActivity?.player?.length && (
+            <>
+              <SectionTitle text="Spotify na żywo" className="p-[30px]" />
+              <div className="p-[30px] component-border-bottom">
+                <AsideSpotify spotifyActivity={spotifyActivity} />
+              </div>
+            </>
+          )}
         </>
       }
     >
