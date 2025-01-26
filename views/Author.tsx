@@ -41,7 +41,7 @@ export default function Author({
           {spotifyActivity?.player?.length && (
             <>
               <SectionTitle text="Spotify na żywo" className="p-[30px]" />
-              <div className="p-[30px] component-border-bottom">
+              <div className="p-[15px] component-border-bottom">
                 <AsideSpotify spotifyActivity={spotifyActivity} />
               </div>
             </>
