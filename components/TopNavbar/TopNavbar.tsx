@@ -16,7 +16,7 @@ export const TopNavbar = ({ items = [] }: any) => {
   }
 
   return (
-    <div className="component-border-bottom flex font-jost text-[16px] h-[50px]">
+    <div className="component-border-bottom flex font-jost text-[16px] h-[50px] flex items-center justify-between">
       <div
         style={{
           display: "flex",
@@ -26,9 +26,7 @@ export const TopNavbar = ({ items = [] }: any) => {
         }}
       >
         <div className="flex items-center gap-[15px]">
-          <Logo height={25} />
-          <div className={styles.divSeparator}></div>
-          <FrameworkLogo width={75} />
+          <Logo />
         </div>
 
         {items.map(({ url, name }: any) => (
@@ -40,6 +38,9 @@ export const TopNavbar = ({ items = [] }: any) => {
             {name}
           </Link>
         ))}
+      </div>
+      <div className="mr-[30px]">
+        <FrameworkLogo width={75} />
       </div>
     </div>
   );
